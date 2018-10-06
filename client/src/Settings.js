@@ -3,8 +3,10 @@ import React, { Component } from 'react'
 class Settings extends Component {
   render() {
     return (
-      <div className="Settings">
-        <h1 className='title'>Settings</h1>
+      <div className="columns is-mobile Settings">
+        <div className="column settings-column is-6">
+          <h1 className='title'>Settings</h1>
+        </div>
       </div>
     );
   }

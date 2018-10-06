@@ -16,12 +16,6 @@ class QuickInfo extends Component {
             <p className="title">Rs. 123</p>
           </div>
         </div>
-        <div className="level-item has-text-centered">
-          <div>
-            <p className="heading">Plus</p>
-            <p className="title">+</p>
-          </div>
-        </div>
       </nav>
     );
   }
