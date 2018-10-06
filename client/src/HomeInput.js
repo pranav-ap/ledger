@@ -10,9 +10,9 @@ class HomeInput extends Component {
           </div>
         </div>
         <div className="field is-pulled-right">
-          <label for="plus-or-minus">Income&nbsp;&nbsp;</label>
+          <label htmlFor="plus-or-minus">Income&nbsp;&nbsp;</label>
           <input id="plus-or-minus" type="checkbox" name="plus-or-minus" className="switch is-rounded" checked="checked" />
-          <label for="plus-or-minus">Expenditure&nbsp;</label>
+          <label htmlFor="plus-or-minus">Expenditure&nbsp;</label>
         </div>
       </div>
     );

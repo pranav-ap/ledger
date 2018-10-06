@@ -2,6 +2,10 @@
   .navbar-custom {
     padding: 1em 2em;
     margin-bottom: 2em;
+
+    .custom-icon {
+      font-size: 1.8em;
+    }
   }
 
   .Home {
@@ -16,6 +20,18 @@
 
   .History {
     .history-column {
+      margin: 0 auto;
+    }
+  }
+
+  .Report {
+    .report-column {
+      margin: 0 auto;
+    }
+  }
+
+  .Settings {
+    .settings-column {
       margin: 0 auto;
     }
   }
