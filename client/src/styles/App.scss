@@ -14,7 +14,12 @@
     }
 
     .HomeInput {
-      margin-bottom: 3em;
+      margin-bottom: 2em;
+
+      .custom-input {
+        padding-left: 3em;
+        padding-right: 3em;
+      }
     }
   }
 
