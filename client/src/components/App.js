@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom'
-import './App.scss'
+import '../styles/App.scss'
 import Navbar from './Navbar'
 import Home from './Home'
 import History from './History'
 import Settings from './Settings'
 import Report from './Report'
+
 
 class App extends Component {
   render() {
