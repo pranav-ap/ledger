@@ -21,7 +21,7 @@ app.use((err, req, res, next) => {
 })
 
 app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.js'));
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
 });
 
 // listen for requests
