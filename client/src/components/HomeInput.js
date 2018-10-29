@@ -6,8 +6,11 @@ class HomeInput extends Component {
       <div className='HomeInput'>
         <div className='field'>
           <div className='control'>
-            <input className='input is-medium custom-input' type='text' placeholder='Enter Command' autoFocus />
+            <input className="input is-rounded is-large custom-input" type="text" placeholder="What did you buy ?" />
           </div>
+        </div>
+        <div id='Subtext'>
+          <span className="tag is-danger">Cancel</span>
         </div>
       </div>
     );

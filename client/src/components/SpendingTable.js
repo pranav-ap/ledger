@@ -9,7 +9,7 @@ class SpendingTable extends Component {
             <tr>
               <th>No</th>
               <th>Item</th>
-              <th>Cost</th>
+              <th>Cash</th>
               <th>Comments</th>
             </tr>
           </thead>

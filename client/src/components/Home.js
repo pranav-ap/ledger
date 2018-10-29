@@ -7,7 +7,7 @@ class Home extends Component {
   render() {
     return (
       <div className="columns is-mobile Home">
-        <div className="column home-column is-6">
+        <div className="column home-column is-7">
           <QuickInfo />
           <br />
           <HomeInput />
