@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import SpendingTable from './SpendingTable'
+import CashTable from './CashTable'
 
 class History extends Component {
   render() {
@@ -9,7 +9,7 @@ class History extends Component {
           <h1 className='title'>History</h1>
           <p>For each week and month, display the following table</p>
           <br />
-          <SpendingTable />
+          <CashTable />
         </div>
       </div>
     );

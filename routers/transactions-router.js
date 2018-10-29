@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
             .toArray()
 
         if (!result) {
-            throw new Error('unable to get transactions from collection')
+            throw new Error('Unable to get transactions from collection')
         }
         // sends an array of documents
         res.status(200).send(result)
@@ -30,7 +30,7 @@ router.post('/', async (req, res) => {
             .insertOne(req.body)
 
         if (!result) {
-            throw new Error('unable to insert transaction doc into collection')
+            throw new Error('Unable to insert transaction doc into collection')
         }
 
         res.status(200).send(result.ops[0])
@@ -44,13 +44,15 @@ router.delete('/:id', async (req, res) => {
 
     try {
         let db = await mongoUtils.connectToDB()
-        let result = await db.collection('transactions').findOneAndDelete({ _id })
+        let result = await db
+            .collection('transactions')
+            .findOneAndDelete({ _id })
 
         if (!result.ok) {
             throw new Error('Unable to delete transaction doc from transactions collection')
         }
 
-        res.status(200).send(result)
+        res.status(200).send(result['value'])
     } catch (e) {
         res.status(400).send(e)
     }

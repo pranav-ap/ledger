@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SpendingTable from './SpendingTable'
+import CashTable from './CashTable'
 import QuickInfo from './QuickInfo'
 import HomeInput from './HomeInput'
 
@@ -12,7 +12,7 @@ class Home extends Component {
           <br />
           <HomeInput />
           <br />
-          <SpendingTable />
+          <CashTable />
         </div>
       </div>
     );

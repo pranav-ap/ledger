@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class SpendingTable extends Component {
+class CashTable extends Component {
   render() {
     return (
       <div className="SpendingTable">
@@ -57,4 +57,4 @@ class SpendingTable extends Component {
   }
 }
 
-export default SpendingTable;
+export default CashTable;
