@@ -25,11 +25,8 @@
         padding-left: 2em;
         padding-right: 2em;
 
-        #Item {
-          float: left;
-        }
-
         #Cancel {
+          opacity: 0;
           float: right;
           color: red;
           cursor: pointer;

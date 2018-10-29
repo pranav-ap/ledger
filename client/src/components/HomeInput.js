@@ -13,7 +13,7 @@ class HomeInput extends Component {
   handleOnEnter(e) {
     e.preventDefault()
 
-    let inputbar = document.getElementById('inputbar')
+    let inputbar = document.getElementById('Inputbar')
     let text = inputbar.value
 
     if (text.length === 0 || e.keyCode !== 13) {
@@ -21,9 +21,12 @@ class HomeInput extends Component {
     }
 
     if (this.state.item === '') {
-      this.setState({ 'item': text })
-      inputbar.placeholder = 'How much did it cost ?'
-      inputbar.value = ''
+      this.setState({ 'item': text }, () => {
+        inputbar.value = ''
+        inputbar.placeholder = `How much did the ${this.state.item} cost ?`
+
+        document.querySelector('#Subtext #Cancel').style.opacity = 1
+      })
     }
     else if (isNaN(text)) {
       inputbar.value = ''
@@ -31,10 +34,22 @@ class HomeInput extends Component {
     }
     else {
       this.setState({ 'cost': Number(text) }, () => {
-        inputbar.value = ''
-        inputbar.placeholder = 'What did you buy ?'
+        this.reset()
       })
     }
+  }
+
+  reset() {
+    this.setState({
+      item: '',
+      cost: 0
+    }, () => {
+      document.querySelector('#Subtext #Cancel').style.opacity = 0
+
+      let inputbar = document.getElementById('Inputbar')
+      inputbar.value = ''
+      inputbar.placeholder = 'What did you buy ?'
+    })
   }
 
   render() {
@@ -43,7 +58,7 @@ class HomeInput extends Component {
         <div className='field'>
           <div className='control'>
             <input
-              id='inputbar'
+              id='Inputbar'
               ref='inputbar'
               className="input is-rounded is-large custom-input"
               type="text"
@@ -53,8 +68,7 @@ class HomeInput extends Component {
           </div>
         </div>
         <div id='Subtext'>
-          <span id='Item'></span>
-          <span id='Cancel'>Cancel</span>
+          <span id='Cancel' onClick={() => this.reset()}>Cancel</span>
         </div>
       </div>
     );
