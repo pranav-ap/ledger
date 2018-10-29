@@ -25,7 +25,11 @@
         padding-left: 2em;
         padding-right: 2em;
 
-        span {
+        #Item {
+          float: left;
+        }
+
+        #Cancel {
           float: right;
           color: red;
           cursor: pointer;
