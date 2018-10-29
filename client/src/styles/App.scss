@@ -14,7 +14,7 @@
     }
 
     .HomeInput {
-      margin-bottom: 2em;
+      margin-bottom: 3em;
 
       .custom-input {
         padding-left: 3em;
@@ -27,7 +27,18 @@
 
         span {
           float: right;
+          color: red;
         }
+      }
+    }
+  }
+
+  .SpendingTable {
+    i {
+      opacity: 0.1;
+      &:hover {
+        color: red;
+        opacity: 1;
       }
     }
   }

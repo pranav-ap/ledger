@@ -10,7 +10,7 @@ class HomeInput extends Component {
           </div>
         </div>
         <div id='Subtext'>
-          <span className="tag is-danger">Cancel</span>
+          <span>Cancel</span>
         </div>
       </div>
     );

@@ -11,39 +11,44 @@ class SpendingTable extends Component {
               <th>Item</th>
               <th>Cash</th>
               <th>Comments</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <th>1</th>
-              <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C." title="Leicester City F.C.">Leicester City</a> <strong>(C)</strong>
-              </td>
+              <td>Leicester City</td>
               <td>38</td>
               <td>Bought this for me</td>
+              <td><i className="far fa-trash-alt delete-btn"></i></td>
             </tr>
             <tr>
               <th>2</th>
-              <td><a href="https://en.wikipedia.org/wiki/Arsenal_F.C." title="Arsenal F.C.">Arsenal</a></td>
+              <td>Arsenal</td>
               <td>38</td>
               <td>Bought this for me</td>
+              <td><i className="far fa-trash-alt delete-btn"></i></td>
             </tr>
             <tr>
               <th>3</th>
-              <td><a href="https://en.wikipedia.org/wiki/Tottenham_Hotspur_F.C." title="Tottenham Hotspur F.C.">Tottenham Hotspur</a></td>
+              <td>Tottenham Hotspur</td>
               <td>38</td>
               <td>Bought this for me</td>
+              <td><i className="far fa-trash-alt delete-btn"></i></td>
             </tr>
             <tr>
               <th>4</th>
-              <td><a href="https://en.wikipedia.org/wiki/Manchester_City_F.C." title="Manchester City F.C.">Manchester City</a></td>
+              <td>Manchester City</td>
               <td>38</td>
               <td>Bought this for me</td>
+              <td><i className="far fa-trash-alt delete-btn"></i></td>
             </tr>
             <tr>
               <th>5</th>
-              <td><a href="https://en.wikipedia.org/wiki/Manchester_United_F.C." title="Manchester United F.C.">Manchester United</a></td>
+              <td>Manchester United</td>
               <td>38</td>
               <td>Bought this for me</td>
+              <td><i className="far fa-trash-alt delete-btn"></i></td>
             </tr>
           </tbody>
         </table>
