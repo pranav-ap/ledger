@@ -28,6 +28,7 @@
         span {
           float: right;
           color: red;
+          cursor: pointer;
         }
       }
     }
@@ -37,6 +38,7 @@
     i {
       opacity: 0.1;
       &:hover {
+        cursor: pointer;
         color: red;
         opacity: 1;
       }
