@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class HomeInput extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      item: '',
-      cost: 0
+      'item': '',
+      'cost': 0
     }
   }
 
@@ -27,13 +27,12 @@ class HomeInput extends Component {
 
         document.querySelector('#Subtext #Cancel').style.opacity = 1
       })
-    }
-    else if (isNaN(text)) {
+    } else if (isNaN(text)) {
       inputbar.value = ''
       inputbar.placeholder = 'Please enter a number'
-    }
-    else {
+    } else {
       this.setState({ 'cost': Number(text) }, () => {
+        this.props.handleAddItem(this.state.item, this.state.cost)
         this.reset()
       })
     }
@@ -60,9 +59,9 @@ class HomeInput extends Component {
             <input
               id='Inputbar'
               ref='inputbar'
-              className="input is-rounded is-large custom-input"
-              type="text"
-              placeholder="What did you buy ?"
+              className='input is-rounded is-large custom-input'
+              type='text'
+              placeholder='What did you buy ?'
               onKeyUp={(e) => this.handleOnEnter(e)}
               autoFocus />
           </div>
