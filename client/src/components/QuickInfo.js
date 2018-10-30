@@ -13,7 +13,7 @@ class QuickInfo extends Component {
         <div className='level-item has-text-centered'>
           <div>
             <p className='heading'>Total Spending</p>
-            <p className='title'>Rs. 123</p>
+            <p className='title'>Rs. {this.props.totalSpending}</p>
           </div>
         </div>
       </nav>

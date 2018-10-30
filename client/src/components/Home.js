@@ -41,12 +41,20 @@ class Home extends Component {
     return transactions
   }
 
+  getTotalSpending() {
+    let transactions = this.props.transactions.filter(transaction => transaction.date === this.state.date)
+    let totalSpending = 0
+    totalSpending = transactions.reduce((totalSpending, transaction) => totalSpending + transaction.cash, 0)
+    return totalSpending
+  }
+
   render() {
     return (
       <div className="columns is-mobile Home">
         <div className="column home-column is-7">
           <QuickInfo
             date={this.state.date}
+            totalSpending={this.getTotalSpending()}
             handleSetDate={(date) => this.setDate(date)} />
           <br />
           <HomeInput handleAddTransaction={(transaction) => this.handleAddTransaction(transaction)} />
