@@ -6,7 +6,8 @@ class HomeInput extends Component {
 
     this.state = {
       'item': '',
-      'cost': 0
+      'cash': 0,
+      'comment': ''
     }
   }
 
@@ -31,8 +32,8 @@ class HomeInput extends Component {
       inputbar.value = ''
       inputbar.placeholder = 'Please enter a number'
     } else {
-      this.setState({ 'cost': Number(text) }, () => {
-        this.props.handleAddTransaction(this.state.item, this.state.cost)
+      this.setState({ 'cash': Number(text) }, () => {
+        this.props.handleAddTransaction(this.state)
         this.reset()
       })
     }
@@ -41,7 +42,7 @@ class HomeInput extends Component {
   reset() {
     this.setState({
       item: '',
-      cost: 0
+      cash: 0
     }, () => {
       document.querySelector('#Subtext #Cancel').style.opacity = 0
 

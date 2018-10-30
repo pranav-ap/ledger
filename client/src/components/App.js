@@ -36,19 +36,26 @@ class App extends Component {
 
   handleAddTransaction(transaction) {
     this.setState({
-      'transactions': {
+      'transactions': [
         ...this.state.transactions,
         transaction
-      }
+      ]
     })
   }
 
-  handleDeleteTransaction(transaction) {
-    let transactions = [...this.props.transactions]
-    let index = transactions.indexOf(transaction)
-    transactions.splice(index, 1);
-    this.setState({ 'transactions': transactions });
+  handleDeleteTransaction(_id) {
+    axios
+      .delete(`/api/transactions/${_id}`)
+      .then(transaction => {
+        let transactions = this.state.transactions.filter(t => t._id !== _id)
+        this.setState({ 'transactions': transactions });
+      })
+      .catch(e => {
+        console.log(e)
+        console.log('item could not be deleted')
+      })
   }
+
 
   render() {
     return (
@@ -56,14 +63,17 @@ class App extends Component {
         <div className="App">
           <Navbar />
           <Switch>
-            <Route path='/history' render={() => <History transactions={this.state.transactions} />} />
             <Route path='/report' render={() => <Report transactions={this.state.transactions} />} />
-            <Route path='/settings' render={() => <Settings transactions={this.state.transactions} />} />
+            <Route path='/settings' render={() => <Settings />} />
+            <Route path='/history'
+              render={() => <History
+                transactions={this.state.transactions}
+                handleDeleteTransaction={(_id) => this.handleDeleteTransaction(_id)} />} />
             <Route exact path='/'
               render={() => <Home
                 transactions={this.state.transactions}
-                handleAddTransaction={this.handleAddTransaction.bind(this)}
-                handleDeleteTransaction={this.handleDeleteTransaction.bind(this)} />} />
+                handleAddTransaction={(transaction) => this.handleAddTransaction(transaction)}
+                handleDeleteTransaction={(_id) => this.handleDeleteTransaction(_id)} />} />
             <Redirect to='/' />
           </Switch>
         </div>

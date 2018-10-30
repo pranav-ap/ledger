@@ -2,9 +2,7 @@ import React, { Component } from 'react'
 
 class CashTable extends Component {
   renderRow() {
-    let transactions = this.props.transactions.filter(transaction => transaction.date === this.props.date)
-
-    if (transactions.length === 0) {
+    if (this.props.transactions.length === 0) {
       return (
         <tr>
           <th></th>
@@ -18,7 +16,7 @@ class CashTable extends Component {
 
     let count = 0
 
-    return transactions.map(transaction => {
+    return this.props.transactions.map(transaction => {
       count++
 
       return (
@@ -27,7 +25,7 @@ class CashTable extends Component {
           <td>{transaction.item}</td>
           <td>{transaction.cash}</td>
           <td>{transaction.comment}</td>
-          <td onClick={() => this.handleDeleteRow(transaction._id)}><i className="far fa-trash-alt delete-btn"></i></td>
+          <td onClick={() => this.props.handleDeleteTransaction(transaction._id)}><i className="far fa-trash-alt delete-btn"></i></td>
         </tr>
       )
     })
@@ -35,7 +33,7 @@ class CashTable extends Component {
 
   render() {
     return (
-      <div className="TransactionsTable">
+      <div className="CashTable">
         <table className="table is-striped is-hoverable is-fullwidth">
           <thead>
             <tr>
