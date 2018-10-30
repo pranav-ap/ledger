@@ -56,4 +56,3 @@ class CashTable extends Component {
 }
 
 export default CashTable;
-

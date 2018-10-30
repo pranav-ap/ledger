@@ -32,7 +32,7 @@ class HomeInput extends Component {
       inputbar.placeholder = 'Please enter a number'
     } else {
       this.setState({ 'cost': Number(text) }, () => {
-        this.props.handleAddItem(this.state.item, this.state.cost)
+        this.props.handleAddTransaction(this.state.item, this.state.cost)
         this.reset()
       })
     }

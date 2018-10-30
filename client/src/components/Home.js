@@ -16,25 +16,15 @@ class Home extends Component {
       'item': '',
       'cash': 0,
       'date': date,
-      'comment': '',
-      'transactions': []
+      'comment': ''
     }
   }
 
-  componentWillMount() {
-    axios
-      .get('/api/transactions')
-      .then(result => {
-        this.setState({ 'transactions': result.data || [] })
-      })
-  }
-
-  // must also update transactions table
   setDate() {
     console.log('must implement setDate()')
   }
 
-  addItem(item, cash) {
+  addTransaction(item, cash) {
     this.setState({ 'item': item, 'cash': cash }, () => {
       axios
         .post('/api/transactions', {
@@ -42,14 +32,7 @@ class Home extends Component {
           'cash': this.state.cash,
           'comment': this.state.comment
         })
-        .then(res => {
-          this.setState({
-            'transactions': {
-              ...this.state.transactions,
-              res
-            }
-          })
-        })
+        .then(res => this.props.handleAddTransaction(res))
         .catch(e => {
           console.log(e)
           console.log('unable to add item')
@@ -60,12 +43,7 @@ class Home extends Component {
   deleteRow(_id) {
     axios
       .delete(`/api/transactions/${_id}`)
-      .then(res => {
-        let transactions = [...this.state.transactions]
-        let index = transactions.indexOf(res)
-        transactions.splice(index, 1);
-        this.setState({ 'transactions': transactions });
-      })
+      .then(res => this.handleDeleteTransaction(res))
       .catch(e => {
         console.log(e)
         console.log('item could not be deleted')
@@ -81,10 +59,10 @@ class Home extends Component {
             handleSetDate={this.setDate.bind(this)} />
           <br />
           <HomeInput
-            handleAddItem={this.addItem.bind(this)} />
+            handleAddTransaction={this.addTransaction.bind(this)} />
           <br />
           <CashTable
-            transactions={this.state.transactions}
+            transactions={this.props.transactions}
             date={this.state.date}
             handleDeleteRow={this.deleteRow.bind(this)} />
         </div>
