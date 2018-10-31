@@ -44,6 +44,5 @@ class Navbar extends Component {
     );
   }
 }
-// <a className="navbar-item">Settings</a>
 
 export default Navbar;

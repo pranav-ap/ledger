@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 class CashTable extends Component {
-  renderRow() {
+  renderRows() {
     if (this.props.transactions.length === 0) {
       return (
         <tr>
@@ -25,7 +25,7 @@ class CashTable extends Component {
           <td>{transaction.item}</td>
           <td>{transaction.cash}</td>
           <td>{transaction.comment}</td>
-          <td onClick={() => this.props.handleDeleteTransaction(transaction._id)}><i className="far fa-trash-alt delete-btn"></i></td>
+          <td onClick={() => this.props.handleDeleteTransaction(transaction._id)}><i className='far fa-trash-alt delete-btn'></i></td>
         </tr>
       )
     })
@@ -33,8 +33,8 @@ class CashTable extends Component {
 
   render() {
     return (
-      <div className="CashTable">
-        <table className="table is-striped is-hoverable is-fullwidth">
+      <div className='CashTable'>
+        <table className='table is-striped is-hoverable is-fullwidth'>
           <thead>
             <tr>
               <th>No</th>
@@ -45,11 +45,11 @@ class CashTable extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.renderRow()}
+            {this.renderRows()}
           </tbody>
         </table>
       </div>
-    );
+    )
   }
 }
 

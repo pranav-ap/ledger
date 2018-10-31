@@ -1,32 +1,39 @@
 import React, { Component } from 'react'
 import CashTable from './CashTable'
-// sorts transactions and groups them into weeks
-// calls cashtable for each
+
+
 class History extends Component {
-  renderTable() {
+  renderTables() {
     let transactions = {}
     transactions = this.props.transactions.reduce((transactions, transaction) => {
-      transactions[transaction.date] = transaction
+      transactions[transaction.date] = transactions[transaction.date] || []
+      transactions[transaction.date] = [
+        ...transactions[transaction.date],
+        transaction
+      ]
       return transactions
     }, {})
 
-    return Object.keys(transactions).forEach(date => {
+    return Object.keys(transactions).map(date => {
       return (
-        <CashTable
-          transactions={transactions[date]}
-          handleDeleteTransaction={(_id) => this.props.handleDeleteTransaction(_id)} />
+        <React.Fragment key={date}>
+          <h1 className='title is-5 has-text-weight-light date-title'>{date}</h1>
+          <CashTable
+            transactions={transactions[date]}
+            handleDeleteTransaction={(_id) => this.props.handleDeleteTransaction(_id)} />
+          <br />
+        </React.Fragment>
       )
     })
   }
 
   render() {
     return (
-      <div className="columns is-mobile History">
-        <div className="column history-column is-8">
+      <div className='columns is-mobile History'>
+        <div className='column history-column is-8'>
           <h1 className='title'>History</h1>
-          <p>For each week and month, display the following table</p>
           <br />
-
+          {this.renderTables()}
         </div>
       </div>
     );

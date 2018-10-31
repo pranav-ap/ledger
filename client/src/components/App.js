@@ -25,7 +25,6 @@ class App extends Component {
     axios
       .get('/api/transactions')
       .then(res => {
-        console.log(res.data)
         this.setState({ transactions: res.data || [] })
       })
       .catch(e => {
@@ -55,7 +54,6 @@ class App extends Component {
         console.log('item could not be deleted')
       })
   }
-
 
   render() {
     return (
