@@ -25,6 +25,7 @@ class Home extends Component {
   }
 
   handleAddTransaction(state) {
+    document.getElementById('waiting').classList.toggle('is-invisible')
     axios
       .post('/api/transactions', {
         item: state.item,
@@ -32,8 +33,14 @@ class Home extends Component {
         date: this.state.date,
         comment: state.comment
       })
-      .then(res => this.setState({ ...res.data }, () => this.props.handleAddTransaction(res.data)))
-      .catch(e => console.log(e, 'unable to add transaction'))
+      .then(res => this.setState({ ...res.data }, () => {
+        this.props.handleAddTransaction(res.data)
+        document.getElementById('waiting').classList.toggle('is-invisible')
+      }))
+      .catch(e => {
+        console.log(e, 'unable to add transaction')
+        document.getElementById('waiting').classList.toggle('is-invisible')
+      })
   }
 
   getTransactions() {

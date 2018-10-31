@@ -8,6 +8,14 @@
     }
   }
 
+  #waiting {
+    position: fixed;
+    bottom: 1em;
+    right: 1em;
+
+    font-size: 3em;
+  }
+
   .Home {
     .home-column {
       margin: 0 auto;

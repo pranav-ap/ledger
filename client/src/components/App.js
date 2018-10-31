@@ -43,22 +43,25 @@ class App extends Component {
   }
 
   handleDeleteTransaction(_id) {
+    document.getElementById('waiting').classList.toggle('is-invisible')
     axios
       .delete(`/api/transactions/${_id}`)
-      .then(transaction => {
+      .then(() => {
         let transactions = this.state.transactions.filter(t => t._id !== _id)
         this.setState({ transactions });
+        document.getElementById('waiting').classList.toggle('is-invisible')
       })
       .catch(e => {
         console.log(e)
         console.log('item could not be deleted')
+        document.getElementById('waiting').classList.toggle('is-invisible')
       })
   }
 
   render() {
     return (
       <BrowserRouter>
-        <div className="App">
+        <div className='App'>
           <Navbar />
           <Switch>
             <Route path='/report' render={() => <Report transactions={this.state.transactions} />} />
@@ -74,6 +77,7 @@ class App extends Component {
                 handleDeleteTransaction={(_id) => this.handleDeleteTransaction(_id)} />} />
             <Redirect to='/' />
           </Switch>
+          <i className='fas fa-spinner fa-spin is-invisible' id='waiting'></i>
         </div>
       </BrowserRouter>
     );
