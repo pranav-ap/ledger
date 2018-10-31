@@ -13,7 +13,8 @@
     bottom: 1em;
     right: 1em;
 
-    font-size: 3em;
+    font-size: 2em;
+    color: black;
   }
 
   .Home {
@@ -45,7 +46,7 @@
 
   .CashTable {
     i {
-      opacity: 0.1;
+      opacity: 0.3;
       &:hover {
         cursor: pointer;
         color: red;
