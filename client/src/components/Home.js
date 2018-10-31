@@ -21,7 +21,7 @@ class Home extends Component {
   }
 
   setDate(date) {
-    this.setState({ date: date })
+    this.setState({ date })
   }
 
   handleAddTransaction(state) {
