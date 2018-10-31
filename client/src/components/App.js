@@ -17,7 +17,7 @@ class App extends Component {
     super(props)
 
     this.state = {
-      'transactions': []
+      transactions: []
     }
   }
 
@@ -26,7 +26,7 @@ class App extends Component {
       .get('/api/transactions')
       .then(res => {
         console.log(res.data)
-        this.setState({ 'transactions': res.data || [] })
+        this.setState({ transactions: res.data || [] })
       })
       .catch(e => {
         console.log(e)
@@ -36,7 +36,7 @@ class App extends Component {
 
   handleAddTransaction(transaction) {
     this.setState({
-      'transactions': [
+      transactions: [
         ...this.state.transactions,
         transaction
       ]
@@ -48,7 +48,7 @@ class App extends Component {
       .delete(`/api/transactions/${_id}`)
       .then(transaction => {
         let transactions = this.state.transactions.filter(t => t._id !== _id)
-        this.setState({ 'transactions': transactions });
+        this.setState({ transactions });
       })
       .catch(e => {
         console.log(e)

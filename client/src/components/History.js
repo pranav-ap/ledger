@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import CashTable from './CashTable'
-// sorts transactions ans groups into weeks
+// sorts transactions and groups them into weeks
 // calls cashtable for each
 class History extends Component {
   render() {

@@ -13,24 +13,24 @@ class Home extends Component {
     let date = moment().format('Do MMMM YYYY')
 
     this.state = {
-      'item': '',
-      'cash': 0,
-      'date': date,
-      'comment': ''
+      item: '',
+      cash: 0,
+      date: date,
+      comment: ''
     }
   }
 
   setDate(date) {
-    this.setState({ 'date': date })
+    this.setState({ date: date })
   }
 
   handleAddTransaction(state) {
     axios
       .post('/api/transactions', {
-        'item': state.item,
-        'cash': state.cash,
-        'date': this.state.date,
-        'comment': state.comment
+        item: state.item,
+        cash: state.cash,
+        date: this.state.date,
+        comment: state.comment
       })
       .then(res => this.setState({ ...res.data }, () => this.props.handleAddTransaction(res.data)))
       .catch(e => console.log(e, 'unable to add transaction'))

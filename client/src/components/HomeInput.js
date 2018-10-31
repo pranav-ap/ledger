@@ -5,9 +5,9 @@ class HomeInput extends Component {
     super(props)
 
     this.state = {
-      'item': '',
-      'cash': 0,
-      'comment': ''
+      item: '',
+      cash: 0,
+      comment: ''
     }
   }
 
@@ -22,7 +22,7 @@ class HomeInput extends Component {
     }
 
     if (this.state.item === '') {
-      this.setState({ 'item': text }, () => {
+      this.setState({ item: text }, () => {
         inputbar.value = ''
         inputbar.placeholder = `How much did the ${this.state.item} cost ?`
 
@@ -32,7 +32,7 @@ class HomeInput extends Component {
       inputbar.value = ''
       inputbar.placeholder = 'Please enter a number'
     } else {
-      this.setState({ 'cash': Number(text) }, () => {
+      this.setState({ cash: Number(text) }, () => {
         this.props.handleAddTransaction(this.state)
         this.reset()
       })
