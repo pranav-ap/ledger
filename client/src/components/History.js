@@ -31,7 +31,7 @@ class History extends Component {
     return (
       <div className='columns is-mobile History'>
         <div className='column history-column is-8'>
-          <h1 className='title'>History</h1>
+          <h1 className='title custom-title '>History</h1>
           <br />
           {this.renderTables()}
         </div>

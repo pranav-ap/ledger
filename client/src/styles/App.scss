@@ -8,6 +8,10 @@
     }
   }
 
+  .custom-title {
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+
   #waiting {
     position: fixed;
     bottom: 1em;
@@ -75,7 +79,7 @@
     }
 
     #heatmap {
-      overflow-x: scroll;
+      overflow-x: auto;
     }
   }
 

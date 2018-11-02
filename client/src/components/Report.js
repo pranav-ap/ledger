@@ -7,33 +7,38 @@ const moment = extendMoment(Moment)
 
 class Report extends Component {
   componentDidMount() {
-    const start = new Date(2018, 1, 2);
-    const end = new Date(2025, 3, 6);
-    const range = moment.range(start, end);
+    const start = new Date(2018, 11, 2);
+    const end = moment().toDate()
 
     const getData = () => {
-      let unix = {}
+      let timestamps = {}
 
-      for (let day of range.by('day')) {
+      for (let day of moment.range(start, end).by('day')) {
         let d = day.format('YYYY-MM-DD').valueOf().toString()
-        unix[d] = Math.floor(Math.random() * 37)
+        timestamps[d] = Math.floor(Math.random() * 37)
       }
 
-      return unix
+      return timestamps
     }
 
     let data = {
       dataPoints: getData(),
       start: start,
-      end: end
+      end: moment().add(5, 'months').toDate()
     }
 
-    let chart = new Chart('#heatmap', {
+    let chart = new Chart('#SpendingHeatmap', {
+      type: 'heatmap',
+      data: data
+    })
+
+    chart = new Chart('#IncomeHeatmap', {
       type: 'heatmap',
       data: data
     })
 
     // hacky way to fix the problem with the tooltip
+    document.getElementsByClassName('comparison')[0].remove()
     document.getElementsByClassName('comparison')[0].remove()
   }
 
@@ -41,8 +46,14 @@ class Report extends Component {
     return (
       <div className='columns is-mobile Report'>
         <div className='column report-column is-8'>
-          <h1 className='title'>Report</h1>
-          <div id='heatmap'></div>
+          <h1 className='title custom-title'>Report</h1>
+          <h1 className='title custom-title is-size-5'>Money in the bank <span className='has-text-weight-light'>Rs. 100000</span></h1>
+          <h1 className='is-size-4 has-text-weight-light'>Spending Heatmap</h1>
+          <div id='SpendingHeatmap'></div>
+          <h1 className='is-size-5'>You spend most of the money on food</h1>
+          <br />
+          <h1 className='is-size-4 has-text-weight-light'>Income Heatmap</h1>
+          <div id='IncomeHeatmap'></div>
         </div>
       </div>
     );
@@ -50,5 +61,3 @@ class Report extends Component {
 }
 
 export default Report;
-
-    // <h1 className='title'>Report</h1>

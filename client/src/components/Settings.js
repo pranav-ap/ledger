@@ -5,7 +5,7 @@ class Settings extends Component {
     return (
       <div className="columns is-mobile Settings">
         <div className="column settings-column is-8">
-          <h1 className='title'>Settings</h1>
+          <h1 className='title custom-title '>Settings</h1>
         </div>
       </div>
     );
