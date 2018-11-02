@@ -1,9 +1,4 @@
 .App {
-  .comparison {
-    z-index: 0;
-    background-color: bisque;
-  }
-
   .navbar-custom {
     padding: 1em 2em;
     margin-bottom: 2em;
@@ -77,6 +72,10 @@
   .Report {
     .report-column {
       margin: 0 auto;
+    }
+
+    #heatmap {
+      overflow-x: scroll;
     }
   }
 
