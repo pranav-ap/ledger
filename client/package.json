@@ -7,6 +7,7 @@
     "bulma": "^0.7.1",
     "chart.heatmap.js": "^0.0.1-alpha",
     "chart.js": "^2.7.3",
+    "frappe-charts": "^1.1.0",
     "moment": "^2.22.2",
     "node-sass": "^4.9.3",
     "react": "^16.5.2",
