@@ -17,6 +17,7 @@ class History extends Component {
     return Object.keys(transactions).map(date => {
       return (
         <React.Fragment key={date}>
+          <br />
           <h1 className='title is-5 has-text-weight-light date-title'>{date}</h1>
           <CashTable
             transactions={transactions[date]}

@@ -46,21 +46,23 @@ class Report extends Component {
     return (
       <div className='columns is-mobile Report'>
         <div className='column report-column is-8'>
-          <h1 className='title custom-title'>Report</h1>
+          <h1 className='title custom-title'>Financial Report</h1>
+          <br />
           <nav className='level'>
             <div className='level-item has-text-centered'>
               <div>
                 <p className='heading'>Money in the bank</p>
-                <p className='title custom-title'>Rs. 100000</p>
+                <p className='title custom-title'>1, 00, 000</p>
               </div>
             </div>
             <div className='level-item has-text-centered'>
               <div>
-                <p className='heading'>Following</p>
-                <p className='title custom-title'>123</p>
+                <p className='heading'>Average Income</p>
+                <p className='title custom-title'>32, 000</p>
               </div>
             </div>
           </nav>
+          <br />
           <h1 className='is-size-5 has-text-weight-light'>Spending Heatmap</h1>
           <div id='SpendingHeatmap'></div>
           <br />
