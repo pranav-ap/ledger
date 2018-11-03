@@ -1,4 +1,9 @@
 .App {
+  background-color: inherit;
+
+  min-height: 100vh;
+	height: 100%;
+
   .navbar-custom {
     padding: 1em 2em;
     margin-bottom: 2em;
@@ -32,6 +37,7 @@
       .custom-input {
         padding-left: 3em;
         padding-right: 3em;
+        background-color: inherit;
       }
 
       #Subtext {
@@ -58,7 +64,8 @@
       }
     }
 
-    th, td {
+    table, th, td {
+      background-color: inherit;
       text-transform: capitalize;
     }
   }

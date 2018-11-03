@@ -1,3 +1,4 @@
+
 @import 'bulma/sass/utilities/initial-variables.sass';
 @import 'bulma/bulma.sass';
 
@@ -9,7 +10,7 @@
 }
 
 ::-webkit-scrollbar {
-      width: 0.5em;
+  width: 0.5em;
 }
 
 ::-webkit-scrollbar-track {
@@ -38,4 +39,16 @@ input[type=text]:focus, textarea:focus {
   padding: 3px 0px 3px 3px;
   margin: 5px 1px 3px 0px;
   border: 1px solid rgba(81, 203, 238, 1);
+}
+
+html {
+  min-height: 100%;
+  margin: 0;
+}
+
+body, #root {
+  // background-color: #fdffff;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
