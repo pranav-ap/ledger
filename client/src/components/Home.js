@@ -15,7 +15,7 @@ class Home extends Component {
     this.state = {
       item: '',
       cash: 0,
-      date: date,
+      date,
       comment: ''
     }
   }

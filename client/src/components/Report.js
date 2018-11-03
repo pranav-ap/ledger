@@ -23,18 +23,18 @@ class Report extends Component {
 
     let data = {
       dataPoints: getData(),
-      start: start,
+      start,
       end: moment().add(5, 'months').toDate()
     }
 
     let chart = new Chart('#SpendingHeatmap', {
       type: 'heatmap',
-      data: data
+      data
     })
 
     chart = new Chart('#IncomeHeatmap', {
       type: 'heatmap',
-      data: data
+      data
     })
 
     // hacky way to fix the problem with the tooltip
@@ -47,12 +47,24 @@ class Report extends Component {
       <div className='columns is-mobile Report'>
         <div className='column report-column is-8'>
           <h1 className='title custom-title'>Report</h1>
-          <h1 className='title custom-title is-size-5'>Money in the bank <span className='has-text-weight-light'>Rs. 100000</span></h1>
-          <h1 className='is-size-4 has-text-weight-light'>Spending Heatmap</h1>
+          <nav className='level'>
+            <div className='level-item has-text-centered'>
+              <div>
+                <p className='heading'>Money in the bank</p>
+                <p className='title custom-title'>Rs. 100000</p>
+              </div>
+            </div>
+            <div className='level-item has-text-centered'>
+              <div>
+                <p className='heading'>Following</p>
+                <p className='title custom-title'>123</p>
+              </div>
+            </div>
+          </nav>
+          <h1 className='is-size-5 has-text-weight-light'>Spending Heatmap</h1>
           <div id='SpendingHeatmap'></div>
-          <h1 className='is-size-5'>You spend most of the money on food</h1>
           <br />
-          <h1 className='is-size-4 has-text-weight-light'>Income Heatmap</h1>
+          <h1 className='is-size-5 has-text-weight-light'>Income Heatmap</h1>
           <div id='IncomeHeatmap'></div>
         </div>
       </div>

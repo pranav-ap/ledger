@@ -7,13 +7,13 @@ class QuickInfo extends Component {
         <div className='level-item has-text-centered'>
           <div>
             <p className='heading'>Date</p>
-            <p className='title custom-title ' onClick={() => this.props.handleSetDate()}>{this.props.date}</p>
+            <p className='title custom-title' onClick={() => this.props.handleSetDate()}>{this.props.date}</p>
           </div>
         </div>
         <div className='level-item has-text-centered'>
           <div>
             <p className='heading'>Total Spending</p>
-            <p className='title custom-title '>Rs. {this.props.totalSpending}</p>
+            <p className='title custom-title'>Rs. {this.props.totalSpending}</p>
           </div>
         </div>
       </nav>
