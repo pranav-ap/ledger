@@ -25,7 +25,7 @@ class CashTable extends Component {
       count++
 
       return (
-        <tr key={transaction._id}>
+        <tr key={count}>
           <th>{count}</th>
           <td>{transaction.item}</td>
           <td>{transaction.cash}</td>

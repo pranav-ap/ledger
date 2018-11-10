@@ -10,7 +10,14 @@ import Report from './Report'
 
 import '../styles/App.scss'
 
+import { startGetAllTransactions } from './../actions/transactions-actions'
+
 class App extends Component {
+  componentDidMount() {
+    const { dispatch } = this.props
+    dispatch(startGetAllTransactions())
+  }
+
   render() {
     return (
       <div className='App'>

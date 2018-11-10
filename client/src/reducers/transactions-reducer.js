@@ -26,12 +26,7 @@ export const transactionsReducer = (state = defaultState, action) => {
         case 'DELETE_TRANSACTION':
             return {
                 ...state,
-                data: state.data.filter(transaction => {
-                    if (transaction._id === action._id) {
-                        return false
-                    }
-                    return true
-                })
+                data: state.data.filter(transaction => transaction._id !== action._id)
             }
         case 'CLEAR':
             return defaultState

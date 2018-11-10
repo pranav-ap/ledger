@@ -1,6 +1,8 @@
 import axios from 'axios'
 
 const startAction = () => {
+    document.getElementById('waiting').classList.toggle('is-invisible')
+
     return {
         type: 'PERFORMING_ACTION',
         isPerformingAction: true
@@ -8,6 +10,8 @@ const startAction = () => {
 }
 
 const stopAction = () => {
+    document.getElementById('waiting').classList.toggle('is-invisible')
+
     return {
         type: 'PERFORMING_ACTION',
         isPerformingAction: false
@@ -70,10 +74,10 @@ export const startAddTransaction = (transaction) => {
 }
 
 // DELETE TRANSACTION
-const deleteTransaction = (transaction) => {
+const deleteTransaction = (_id) => {
     return {
         type: 'DELETE_TRANSACTION',
-        transaction
+        _id
     }
 }
 
@@ -87,7 +91,7 @@ export const startDeleteTransaction = (_id) => {
                 throw new Error('Error in DELETE /api/transactions')
             }
 
-            dispatch(deleteTransaction(result.data))
+            dispatch(deleteTransaction(_id))
         } catch (e) {
             console.log(e)
         } finally {
