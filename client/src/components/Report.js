@@ -8,20 +8,26 @@ const moment = extendMoment(Moment)
 
 class Report extends Component {
   getTotalExpense(date) {
+    const { transactions } = this.props
     let total = 0
 
-    this.props.transactions.forEach(transaction => {
-      total += transaction.date === date ? transaction.cash : 0
-    })
+    console.log(transactions)
+
+    for (let transaction of transactions) {
+      if (transaction.date === date) {
+        total += transaction.cash
+      }
+    }
 
     return total
   }
 
   getDataPoints(start, end) {
     let timestamps = {}
+    const range = moment.range(start, end);
 
-    for (let day of moment.range(start, end).by('day')) {
-      let date = day.format('Dd MMMM YYYY')
+    for (let day of range.by('day')) {
+      let date = day.format('Do MMMM YYYY').toString()
       timestamps[date] = this.getTotalExpense(date)
     }
 
@@ -29,13 +35,14 @@ class Report extends Component {
   }
 
   componentDidMount() {
-    const start = moment(this.props.startDate, 'Dd MMMM YYYY').toDate()
-    const end = moment().add(5, 'months').toDate()
+    // const start = moment(this.props.startDate, 'Dd MMMM YYYY')
+    const start = moment().subtract(7, 'months')
+    const end = moment().add(3, 'months')
 
     let data = {
-      dataPoints: this.getDataPoints(start, end),
-      start,
-      end
+      dataPoints: this.getDataPoints(start.format('YYYY-MM-DD'), end.format('YYYY-MM-DD')),
+      start: start.toDate(),
+      end: end.toDate()
     }
 
     let chart = new Chart('#SpendingHeatmap', {
