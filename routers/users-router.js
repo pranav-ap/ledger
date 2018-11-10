@@ -5,16 +5,18 @@ const { authenticate } = require('../utils/authenticate')
 
 const router = express.Router()
 
-router.get('/', authenticate, async (req, res) => {
+router.get('/:id', authenticate, async (req, res) => {
+    let _id = ObjectId(req.params.id)
+
     try {
         let db = await mongoUtils.connectToDB()
         let result = await db
-            .collection('transactions')
-            .find({})
+            .collection('users')
+            .find({ _id })
             .toArray()
 
         if (!result) {
-            throw new Error('Unable to get transactions from collection')
+            throw new Error('Unable to get users from collection')
         }
         // sends an array of documents
         res.status(200).send(result)
@@ -23,11 +25,11 @@ router.get('/', authenticate, async (req, res) => {
     }
 })
 
-router.post('/', authenticate, async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         let db = await mongoUtils.connectToDB()
         let result = await db
-            .collection('transactions')
+            .collection('users')
             .insertOne(req.body)
 
         if (!result) {
@@ -46,11 +48,11 @@ router.delete('/:id', authenticate, async (req, res) => {
     try {
         let db = await mongoUtils.connectToDB()
         let result = await db
-            .collection('transactions')
+            .collection('users')
             .findOneAndDelete({ _id })
 
         if (!result.ok) {
-            throw new Error('Unable to delete transaction doc from transactions collection')
+            throw new Error('Unable to delete transaction doc from users collection')
         }
 
         res.status(200).send(result['value'])

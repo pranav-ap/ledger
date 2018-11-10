@@ -1,79 +1,44 @@
-import React, { Component } from 'react';
-import moment from 'moment'
-import axios from 'axios'
-
+import React, { Component } from 'react'
 import CashTable from './CashTable'
 import QuickInfo from './QuickInfo'
 import HomeInput from './HomeInput'
 
 class Home extends Component {
-  constructor(props) {
-    super(props)
+  getTotalExpense() {
+    const { transactions } = this.props
+    const today = moment().format('LL')
+    let total = 0
 
-    let date = moment().format('Do MMMM YYYY')
+    transactions.reduce((total, transaction) => transaction.date == today ? total + transaction.cash : total)
 
-    this.state = {
-      item: '',
-      cash: 0,
-      date,
-      comment: ''
-    }
+    return total
   }
 
-  setDate(date) {
-    this.setState({ date })
-  }
+  getTodaysTransactions() {
+    const { transactions } = this.props
+    const today = moment().format('LL')
+    let todaysTransactions = transactions.map(transaction => transaction.date == today)
 
-  handleAddTransaction(state) {
-    document.getElementById('waiting').classList.toggle('is-invisible')
-    axios
-      .post('/api/transactions', {
-        item: state.item,
-        cash: state.cash,
-        date: this.state.date,
-        comment: state.comment
-      })
-      .then(res => this.setState({ ...res.data }, () => {
-        this.props.handleAddTransaction(res.data)
-        document.getElementById('waiting').classList.toggle('is-invisible')
-      }))
-      .catch(e => {
-        console.log(e, 'unable to add transaction')
-        document.getElementById('waiting').classList.toggle('is-invisible')
-      })
-  }
-
-  getTransactions() {
-    let transactions = this.props.transactions.filter(transaction => transaction.date === this.state.date)
-    return transactions
-  }
-
-  getTotalSpending() {
-    let transactions = this.props.transactions.filter(transaction => transaction.date === this.state.date)
-    let totalSpending = 0
-    totalSpending = transactions.reduce((totalSpending, transaction) => totalSpending + transaction.cash, 0)
-    return totalSpending
+    return todaysTransactions
   }
 
   render() {
     return (
       <div className="columns is-mobile Home">
         <div className="column home-column is-7">
-          <QuickInfo
-            date={this.state.date}
-            totalSpending={this.getTotalSpending()}
-            handleSetDate={(date) => this.setDate(date)} />
+          <QuickInfo totalExpense={this.getTotalExpense()} />
           <br />
-          <HomeInput handleAddTransaction={(transaction) => this.handleAddTransaction(transaction)} />
+          <HomeInput />
           <br />
-          <CashTable
-            transactions={this.getTransactions()}
-            date={this.state.date}
-            handleDeleteTransaction={(_id) => this.props.handleDeleteTransaction(_id)} />
+          <CashTable transactions={this.getTodaysTransactions()} />
         </div>
       </div>
     );
   }
 }
 
-export default Home;
+export default connect(state => {
+  return {
+    transactions: state.transactions
+  }
+})(Home)

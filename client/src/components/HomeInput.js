@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
+import { startAddTransaction } from './../actions/transactions-actions'
 
 class HomeInput extends Component {
   constructor(props) {
@@ -33,7 +36,7 @@ class HomeInput extends Component {
       inputbar.placeholder = 'Please enter a number'
     } else {
       this.setState({ cash: Number(text) }, () => {
-        this.props.handleAddTransaction(this.state)
+        startAddTransaction(this.state)
         this.reset()
       })
     }
@@ -71,8 +74,8 @@ class HomeInput extends Component {
           <span id='Cancel' onClick={() => this.reset()}>Cancel</span>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default HomeInput;
+export default connect()(HomeInput)

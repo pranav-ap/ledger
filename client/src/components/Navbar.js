@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom'
 
 class Navbar extends Component {
   componentDidMount() {
@@ -16,7 +16,7 @@ class Navbar extends Component {
     return (
       <nav className='navbar is-warning navbar-custom' role='navigation' aria-label='main navigation'>
         <div className='navbar-brand'>
-          <a className='navbar-item custom-icon'><i className='fas fa-money-check-alt'></i>&nbsp;&nbsp;Ledger&nbsp;&nbsp;</a>
+          <a className='navbar-item custom-icon'><i className='fas fa-money-check-alt'></i>&nbsp&nbspLedger&nbsp&nbsp</a>
 
           <a role='button' className='navbar-burger' aria-label='menu' aria-expanded='false'>
             <span aria-hidden='true'></span>
@@ -41,8 +41,8 @@ class Navbar extends Component {
           </div>
         </div>
       </nav>
-    );
+    )
   }
 }
 
-export default Navbar;
+export default Navbar

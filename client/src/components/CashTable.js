@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
+import { startDeleteTransaction } from './../actions/transactions-actions';
 
 class CashTable extends Component {
   renderRows() {
-    if (this.props.transactions.length === 0) {
+    const { transactions } = this.props
+
+    if (transactions.length === 0) {
       return (
         <tr>
           <th></th>
@@ -16,7 +21,7 @@ class CashTable extends Component {
 
     let count = 0
 
-    return this.props.transactions.map(transaction => {
+    return transactions.map(transaction => {
       count++
 
       return (
@@ -25,7 +30,7 @@ class CashTable extends Component {
           <td>{transaction.item}</td>
           <td>{transaction.cash}</td>
           <td>{transaction.comment}</td>
-          <td onClick={() => this.props.handleDeleteTransaction(transaction._id)}><i className='far fa-trash-alt delete-btn'></i></td>
+          <td onClick={() => startDeleteTransaction(transaction._id)}><i className='far fa-trash-alt delete-btn'></i></td>
         </tr>
       )
     })
@@ -53,4 +58,4 @@ class CashTable extends Component {
   }
 }
 
-export default CashTable;
+export default connect()(CashTable)
