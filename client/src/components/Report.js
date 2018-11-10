@@ -11,8 +11,6 @@ class Report extends Component {
     const { transactions } = this.props
     let total = 0
 
-    console.log(transactions)
-
     for (let transaction of transactions) {
       if (transaction.date === date) {
         total += transaction.cash
@@ -44,6 +42,8 @@ class Report extends Component {
       start: start.toDate(),
       end: end.toDate()
     }
+
+    console.log(data)
 
     let chart = new Chart('#SpendingHeatmap', {
       type: 'heatmap',
