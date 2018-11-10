@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import moment from 'moment'
+
 import CashTable from './CashTable'
 import QuickInfo from './QuickInfo'
 import HomeInput from './HomeInput'
@@ -6,18 +9,20 @@ import HomeInput from './HomeInput'
 class Home extends Component {
   getTotalExpense() {
     const { transactions } = this.props
-    const today = moment().format('LL')
+    const today = moment().format('Do MMMM YYYY')
     let total = 0
 
-    transactions.reduce((total, transaction) => transaction.date == today ? total + transaction.cash : total)
+    transactions.forEach(transaction => {
+      total += transaction.date === today ? transaction.cash : 0
+    })
 
     return total
   }
 
   getTodaysTransactions() {
     const { transactions } = this.props
-    const today = moment().format('LL')
-    let todaysTransactions = transactions.map(transaction => transaction.date == today)
+    const today = moment().format('Do MMMM YYYY')
+    let todaysTransactions = transactions.map(transaction => transaction.date === today)
 
     return todaysTransactions
   }
@@ -39,6 +44,6 @@ class Home extends Component {
 
 export default connect(state => {
   return {
-    transactions: state.transactions
+    transactions: state.transactions.data
   }
 })(Home)

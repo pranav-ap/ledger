@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import moment from 'moment'
 
 import { startAddTransaction } from './../actions/transactions-actions'
 
@@ -10,7 +11,8 @@ class HomeInput extends Component {
     this.state = {
       item: '',
       cash: 0,
-      comment: ''
+      comment: '',
+      date: moment().format('Do MMMM YYYY')
     }
   }
 
@@ -36,7 +38,8 @@ class HomeInput extends Component {
       inputbar.placeholder = 'Please enter a number'
     } else {
       this.setState({ cash: Number(text) }, () => {
-        startAddTransaction(this.state)
+        const { dispatch } = this.props
+        dispatch(startAddTransaction(this.state))
         this.reset()
       })
     }

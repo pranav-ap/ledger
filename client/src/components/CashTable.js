@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { startDeleteTransaction } from './../actions/transactions-actions';
+import { startDeleteTransaction } from './../actions/transactions-actions'
 
 class CashTable extends Component {
   renderRows() {
-    const { transactions } = this.props
+    const { transactions, dispatch } = this.props
 
     if (transactions.length === 0) {
       return (
@@ -30,7 +30,7 @@ class CashTable extends Component {
           <td>{transaction.item}</td>
           <td>{transaction.cash}</td>
           <td>{transaction.comment}</td>
-          <td onClick={() => startDeleteTransaction(transaction._id)}><i className='far fa-trash-alt delete-btn'></i></td>
+          <td onClick={() => dispatch(startDeleteTransaction(transaction._id))}><i className='far fa-trash-alt delete-btn'></i></td>
         </tr>
       )
     })

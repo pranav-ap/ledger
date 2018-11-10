@@ -1,30 +1,41 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Chart } from 'frappe-charts/dist/frappe-charts.esm'
 import Moment from 'moment'
-import { extendMoment } from 'moment-range';
+import { extendMoment } from 'moment-range'
 
 const moment = extendMoment(Moment)
 
 class Report extends Component {
-  componentDidMount() {
-    const start = new Date(2018, 11, 2);
-    const end = moment().toDate()
+  getTotalExpense(date) {
+    let total = 0
 
-    const getData = () => {
-      let timestamps = {}
+    this.props.transactions.forEach(transaction => {
+      total += transaction.date === date ? transaction.cash : 0
+    })
 
-      for (let day of moment.range(start, end).by('day')) {
-        let d = day.format('YYYY-MM-DD').valueOf().toString()
-        timestamps[d] = Math.floor(Math.random() * 37)
-      }
+    return total
+  }
 
-      return timestamps
+  getDataPoints(start, end) {
+    let timestamps = {}
+
+    for (let day of moment.range(start, end).by('day')) {
+      let date = day.format('Dd MMMM YYYY')
+      timestamps[date] = this.getTotalExpense(date)
     }
 
+    return timestamps
+  }
+
+  componentDidMount() {
+    const start = moment(this.props.startDate, 'Dd MMMM YYYY').toDate()
+    const end = moment().add(5, 'months').toDate()
+
     let data = {
-      dataPoints: getData(),
+      dataPoints: this.getDataPoints(start, end),
       start,
-      end: moment().add(5, 'months').toDate()
+      end
     }
 
     let chart = new Chart('#SpendingHeatmap', {
@@ -70,8 +81,13 @@ class Report extends Component {
           <div id='IncomeHeatmap'></div>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default Report;
+export default connect(state => {
+  return {
+    transactions: state.transactions.data,
+    startDate: state.user.startDate
+  }
+})(Report)

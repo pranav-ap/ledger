@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import CashTable from './CashTable'
+import { connect } from 'react-redux'
 
+import CashTable from './CashTable'
 
 class History extends Component {
   renderTables() {
@@ -19,9 +20,7 @@ class History extends Component {
         <React.Fragment key={date}>
           <br />
           <h1 className='title is-5 has-text-weight-light date-title'>{date}</h1>
-          <CashTable
-            transactions={transactions[date]}
-            handleDeleteTransaction={(_id) => this.props.handleDeleteTransaction(_id)} />
+          <CashTable transactions={transactions[date]} />
           <br />
         </React.Fragment>
       )
@@ -40,4 +39,8 @@ class History extends Component {
   }
 }
 
-export default History;
+export default connect(state => {
+  return {
+    transactions: state.transactions.data
+  }
+})(History)
