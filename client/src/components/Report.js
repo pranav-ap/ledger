@@ -26,15 +26,15 @@ class Report extends Component {
 
     for (let day of range.by('day')) {
       let date = day.format('Do MMMM YYYY').toString()
-      timestamps[date] = this.getTotalExpense(date)
+      timestamps[day.unix()] = this.getTotalExpense(date)
     }
 
     return timestamps
   }
 
-  componentDidMount() {
+  componentDidUpdate() {
     // const start = moment(this.props.startDate, 'Dd MMMM YYYY')
-    const start = moment().subtract(7, 'months')
+    const start = moment().subtract(1, 'months')
     const end = moment().add(3, 'months')
 
     let data = {
@@ -43,16 +43,15 @@ class Report extends Component {
       end: end.toDate()
     }
 
-    console.log(data)
-
-    let chart = new Chart('#SpendingHeatmap', {
+    let chart = new Chart('#ExpenseHeatmap', {
       type: 'heatmap',
-      data
+      data,
+      colors: ['#ebedf0', '#c0ddf9', '#73b3f3', '#3886e1', '#17459e']
     })
 
     chart = new Chart('#IncomeHeatmap', {
       type: 'heatmap',
-      data
+      data: {}
     })
 
     // hacky way to fix the problem with the tooltip
@@ -82,7 +81,7 @@ class Report extends Component {
           </nav>
           <br />
           <h1 className='is-size-5 has-text-weight-light'>Spending Heatmap</h1>
-          <div id='SpendingHeatmap'></div>
+          <div id='ExpenseHeatmap'></div>
           <br />
           <h1 className='is-size-5 has-text-weight-light'>Income Heatmap</h1>
           <div id='IncomeHeatmap'></div>
