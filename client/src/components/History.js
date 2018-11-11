@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-// import moment from 'moment'
+import moment from 'moment'
 
 import CashTable from './CashTable'
 
@@ -14,9 +14,17 @@ class History extends Component {
       transactionsDict[t.date].push(t)
     })
 
-    // .sort((left, right) => moment.utc(right.timeStamp).diff(moment.utc(left.timeStamp)))
     return Object
       .keys(transactionsDict)
+      .sort((left, right) => {
+        if (moment(left, 'Do MMMM YYYY').isBefore(moment(right, 'Do MMMM YYYY'))) {
+          return 1
+        } else if (moment(left, 'Do MMMM YYYY').isAfter(moment(right, 'Do MMMM YYYY'))) {
+          return -1
+        } else {
+          return 0
+        }
+      })
       .map(date => {
         return (
           <React.Fragment key={date}>
