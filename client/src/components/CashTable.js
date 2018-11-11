@@ -14,7 +14,6 @@ class CashTable extends Component {
           <td>No transactions on this day.</td>
           <td></td>
           <td></td>
-          <td></td>
         </tr>
       )
     }
@@ -29,7 +28,6 @@ class CashTable extends Component {
           <th>{count}</th>
           <td>{transaction.item}</td>
           <td>{transaction.expense}</td>
-          <td>{transaction.comment}</td>
           <td onClick={() => dispatch(startDeleteTransaction(transaction._id))}><i className='far fa-trash-alt delete-btn'></i></td>
         </tr>
       )
@@ -45,7 +43,6 @@ class CashTable extends Component {
               <th>No</th>
               <th>Item</th>
               <th>Cash</th>
-              <th>Comments</th>
               <th></th>
             </tr>
           </thead>
