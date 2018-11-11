@@ -26,8 +26,8 @@ class App extends Component {
           <Route path='/report' component={Report} />
           <Route path='/settings' component={Settings} />
           <Route path='/history' component={History} />
-          <Route exact path='/' component={Home} />
-          <Redirect to='/' />
+          <Route path='/home' component={Home} />
+          <Redirect to='/home' />
         </Switch>
         <i className='fas fa-spinner fa-spin is-invisible' id='waiting'></i>
       </div>
