@@ -7,22 +7,47 @@ import { extendMoment } from 'moment-range'
 const moment = extendMoment(Moment)
 
 class Report extends Component {
-  getTotalExpense(date) {
+  getTotalIncome(date) {
     const { transactions } = this.props
     let total = 0
 
     for (let transaction of transactions) {
       if (transaction.date === date) {
-        total += transaction.cash
+        total += transaction.income
       }
     }
 
     return total
   }
 
-  getDataPoints(start, end) {
+  getIncomeDataPoints(start, end) {
     let timestamps = {}
-    const range = moment.range(start, end);
+    const range = moment.range(start, end)
+
+    for (let day of range.by('day')) {
+      let date = day.format('Do MMMM YYYY').toString()
+      timestamps[day.unix()] = this.getTotalIncome(date)
+    }
+
+    return timestamps
+  }
+
+  getTotalExpense(date) {
+    const { transactions } = this.props
+    let total = 0
+
+    for (let transaction of transactions) {
+      if (transaction.date === date) {
+        total += transaction.expense
+      }
+    }
+
+    return total
+  }
+
+  getExpenseDataPoints(start, end) {
+    let timestamps = {}
+    const range = moment.range(start, end)
 
     for (let day of range.by('day')) {
       let date = day.format('Do MMMM YYYY').toString()
@@ -32,13 +57,13 @@ class Report extends Component {
     return timestamps
   }
 
-  componentDidUpdate() {
+  setHeatmaps() {
     // const start = moment(this.props.startDate, 'Dd MMMM YYYY')
     const start = moment().subtract(1, 'months')
     const end = moment().add(3, 'months')
 
     let data = {
-      dataPoints: this.getDataPoints(start.format('YYYY-MM-DD'), end.format('YYYY-MM-DD')),
+      dataPoints: this.getExpenseDataPoints(start.format('YYYY-MM-DD'), end.format('YYYY-MM-DD')),
       start: start.toDate(),
       end: end.toDate()
     }
@@ -49,14 +74,28 @@ class Report extends Component {
       colors: ['#ebedf0', '#c0ddf9', '#73b3f3', '#3886e1', '#17459e']
     })
 
+    data = {
+      dataPoints: this.getIncomeDataPoints(start.format('YYYY-MM-DD'), end.format('YYYY-MM-DD')),
+      start: start.toDate(),
+      end: end.toDate()
+    }
+
     chart = new Chart('#IncomeHeatmap', {
       type: 'heatmap',
-      data: {}
+      data
     })
 
     // hacky way to fix the problem with the tooltip
     document.getElementsByClassName('comparison')[0].remove()
     document.getElementsByClassName('comparison')[0].remove()
+  }
+
+  componentDidMount() {
+    this.setHeatmaps()
+  }
+
+  componentDidUpdate() {
+    this.setHeatmaps()
   }
 
   render() {

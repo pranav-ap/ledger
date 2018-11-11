@@ -28,7 +28,7 @@ class CashTable extends Component {
         <tr key={count}>
           <th>{count}</th>
           <td>{transaction.item}</td>
-          <td>{transaction.cash}</td>
+          <td>{transaction.expense}</td>
           <td>{transaction.comment}</td>
           <td onClick={() => dispatch(startDeleteTransaction(transaction._id))}><i className='far fa-trash-alt delete-btn'></i></td>
         </tr>

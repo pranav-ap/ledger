@@ -13,7 +13,7 @@ class Home extends Component {
     let total = 0
 
     transactions.forEach(transaction => {
-      total += transaction.date === today ? transaction.cash : 0
+      total += transaction.date === today ? transaction.expense : 0
     })
 
     return total

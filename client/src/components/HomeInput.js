@@ -10,8 +10,8 @@ class HomeInput extends Component {
 
     this.state = {
       item: '',
-      cash: 0,
-      comment: '',
+      expense: 0,
+      income: 0,
       date: moment().format('Do MMMM YYYY')
     }
   }
@@ -37,7 +37,7 @@ class HomeInput extends Component {
       inputbar.value = ''
       inputbar.placeholder = 'Please enter a number'
     } else {
-      this.setState({ cash: Number(text) }, () => {
+      this.setState({ expense: Number(text) }, () => {
         const { dispatch } = this.props
         dispatch(startAddTransaction(this.state))
         this.reset()
@@ -48,7 +48,7 @@ class HomeInput extends Component {
   reset() {
     this.setState({
       item: '',
-      cash: 0
+      expense: 0
     }, () => {
       document.querySelector('#Subtext #Cancel').style.opacity = 0
 
