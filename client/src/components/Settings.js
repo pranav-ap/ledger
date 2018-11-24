@@ -23,8 +23,8 @@ class Settings extends Component {
           <GoogleLogin
             clientId="419989489957-9cqbsjqis6f62r8ahed6cuer670j4606.apps.googleusercontent.com"
             buttonText="Login"
-            onSuccess={() => this.responseGoogle()}
-            onFailure={() => this.responseGoogle()}
+            onSuccess={(res) => this.responseGoogle(res)}
+            onFailure={(res) => this.responseGoogle(res)}
           />
         </div>
       </div >
