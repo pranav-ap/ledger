@@ -1,12 +1,6 @@
 import React, { Component } from 'react'
-import { GoogleLogin } from 'react-google-login'
 
 class Settings extends Component {
-  responseGoogle(response) {
-    console.log('responseGoogle id_token')
-    console.log(response.tokenObj.id_token)
-  }
-
   render() {
     return (
       <div className='columns is-mobile Settings'>
@@ -20,12 +14,6 @@ class Settings extends Component {
             <span className='tag is-warning is-medium'>Travel</span>
             <span className='tag is-dark is-medium'>Misc</span>
           </div>
-          <GoogleLogin
-            clientId="419989489957-9cqbsjqis6f62r8ahed6cuer670j4606.apps.googleusercontent.com"
-            buttonText="Login"
-            onSuccess={(res) => this.responseGoogle(res)}
-            onFailure={(res) => this.responseGoogle(res)}
-          />
         </div>
       </div >
     )

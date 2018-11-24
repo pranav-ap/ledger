@@ -7,14 +7,14 @@ import { BrowserRouter } from 'react-router-dom'
 
 import { configure } from './store/store'
 
-import Ledger from './components/Ledger'
+import Container from './components/Container'
 
 export const store = configure()
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <Ledger />
+      <Container />
     </BrowserRouter>
   </Provider>,
   document.getElementById('root')

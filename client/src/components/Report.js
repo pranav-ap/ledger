@@ -68,6 +68,7 @@ class Report extends Component {
       end: end.toDate()
     }
 
+    // eslint-disable-next-line
     let chart = new Chart('#ExpenseHeatmap', {
       type: 'heatmap',
       data,
