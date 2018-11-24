@@ -1,51 +1,11 @@
 const express = require('express')
 const { ObjectId } = require('mongodb')
-const jwt = require('jsonwebtoken')
 
 const mongoUtils = require('../utils/mongo-utils')
 const { authenticate } = require('../utils/authenticate')
 
 const router = express.Router()
 
-// generate once for each login
-const generateAuthToken = (req, res, next) => {
-  const _id = new ObjectId()
-  const access = 'auth'
-  const token = jwt.sign(
-    { _id: _id.toHexString(), access },
-    process.env.JWT_SECRET
-  ).toString()
-
-  process.env.token = token
-
-  return token
-}
-
-const removeAuthToken = (req, res, next) => {
-  // delete process.env.token
-  process.env.token = ''
-}
-
-// to authenticate user
-router.get('/me', authenticate, (req, res) => {
-  res.status(200).send()
-})
-
-// login
-router.post('/login', (req, res) => {
-  if (req.body.password !== process.env.PASSWORD) {
-    res.status(400).send()
-  }
-
-  const token = generateAuthToken()
-  res.header('x-auth', token).status(200).send()
-})
-
-// logout
-router.delete('/me/token', authenticate, (req, res) => {
-  removeAuthToken()
-  res.status(200).send()
-})
 
 router.get('/:id', authenticate, async (req, res) => {
   let _id = ObjectId(req.params.id)
