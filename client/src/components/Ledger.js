@@ -1,35 +1,38 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
 
-import App from './App'
-import Welcome from './Welcome'
+import Navbar from './Navbar'
+import Home from './Home'
+import History from './History'
+import Settings from './Settings'
+import Report from './Report'
 
-import { checkIfLoggedIn } from './../actions/user-actions'
+import '../styles/App.scss'
 
-export class Ledger extends React.Component {
+import { startGetAllTransactions } from './../actions/transactions-actions'
+
+class Ledger extends Component {
   componentDidMount() {
     const { dispatch } = this.props
-
-    dispatch(checkIfLoggedIn())
+    dispatch(startGetAllTransactions())
   }
 
   render() {
-    const { loggedIn } = this.props
-
     return (
-      <Switch>
-        <Route path='/app' component={App} />
-        <Route path='/' component={Welcome} />
-        <Redirect to='/' />
-      </Switch>
+      <div className='App'>
+        <Navbar />
+        <Switch>
+          <Route path='/report' component={Report} />
+          <Route path='/settings' component={Settings} />
+          <Route path='/history' component={History} />
+          <Route exact path='/' component={Home} />
+          <Redirect to='/' />
+        </Switch>
+        <i className='fas fa-spinner fa-spin is-invisible' id='waiting'></i>
+      </div>
     )
   }
 }
 
-export default withRouter(connect(state => {
-  return {
-    loggedIn: state.user.loggedIn
-  }
-})(Ledger))
-
+export default withRouter(connect()(Ledger))

@@ -27,7 +27,7 @@ class Navbar extends Component {
 
         <div id='navbar-menu-custom' className='navbar-menu has-background-warning is-shadowless'>
           <div className='navbar-start'>
-            <NavLink to='/home' className='navbar-item'>Home</NavLink>
+            <NavLink to='/' className='navbar-item'>Home</NavLink>
             <NavLink to='/history' className='navbar-item'>History</NavLink>
             <NavLink to='/report' className='navbar-item'>Report</NavLink>
             <NavLink to='/settings' className='navbar-item'>Settings</NavLink>
