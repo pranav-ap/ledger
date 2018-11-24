@@ -3,8 +3,8 @@ import { GoogleLogin } from 'react-google-login'
 
 class Settings extends Component {
   responseGoogle(response) {
-    console.log('responseGoogle')
-    console.log(response)
+    console.log('responseGoogle id_token')
+    console.log(response.tokenObj.id_token)
   }
 
   render() {
