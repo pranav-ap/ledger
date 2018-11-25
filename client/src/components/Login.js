@@ -3,12 +3,21 @@ import { connect } from 'react-redux'
 
 import '../styles/App.scss'
 
+import { startLogin } from './../actions/auth-actions'
+
 class Login extends Component {
+    handleLogin() {
+        const { dispatch } = this.props
+        console.log('password : ', this.refs.password.value)
+        dispatch(startLogin(this.refs.password.value))
+    }
+
     render() {
         return (
             <div className='Login'>
                 <h1>Login</h1>
-                <a className='button is-primary' href='/api/auth/google'>Login</a>
+                <input type="password" className="form-control" id="password" ref="password" placeholder="Password" />
+                <a className='button is-primary' onClick={() => this.handleLogin()}>Login</a>
             </div>
         )
     }

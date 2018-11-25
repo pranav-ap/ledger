@@ -1,27 +1,27 @@
 const express = require('express')
-const passport = require('passport')
+const { generateAuthToken, removeAuthToken, authenticate } = require('./../utils/authenticate')
 
 const router = express.Router()
 
-router.get('/google', () => {
-    console.log('hello')
-}, passport.authenticate('google', {
-    scope: ['profile']
-}))
-
-// callback route for google to redirect to
-router.get('/redirect',
-    () => {
-        console.log('in redirect')
-    },
-    passport.authenticate('google', { failureRedirect: '/ledger' }),
-    function (req, res) {
-        res.redirect('/ledger');
-    })
-
-router.get('/logout', () => {
-    // handle with passport
-    res.send('logging out');
+// to authenticate user
+router.get('/me', authenticate, (req, res) => {
+    res.status(200).send()
 })
+
+// login
+router.post('/login', (req, res, next) => {
+    if (req.body.password === process.env.LEDGER_PASSWORD) {
+        const token = generateAuthToken(req, res, next)
+        res.header('x-auth', token).status(200).send()
+    }
+
+    res.status(400).send()
+})
+
+// logout
+router.delete('/me/token', authenticate, removeAuthToken, (req, res) => {
+    res.status(200).send()
+})
+
 
 module.exports = router

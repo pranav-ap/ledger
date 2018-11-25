@@ -1,21 +1,24 @@
 const defaultState = {
-    startDate: '',
-    name: '',
+    loggedIn: false,
     isPerformingAction: false
 }
 
-export const userReducer = (state = defaultState, action) => {
+export const authReducer = (state = defaultState, action) => {
     switch (action.type) {
         case 'PERFORMING_ACTION':
             return {
                 ...state,
                 isPerformingAction: action.isPerformingAction
             }
-        case 'GET_USER':
+        case 'LOGIN':
             return {
                 ...state,
-                startDate: action.user.startDate,
-                name: action.user.name
+                loggedIn: true
+            }
+        case 'LOGOUT':
+            return {
+                ...state,
+                loggedIn: false
             }
         case 'CLEAR':
             return defaultState
