@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const startAction = () => {
-    document.getElementById('waiting').classList.toggle('is-invisible')
+    // document.getElementById('waiting').classList.toggle('is-invisible')
 
     return {
         type: 'PERFORMING_ACTION',
@@ -10,7 +10,7 @@ const startAction = () => {
 }
 
 const stopAction = () => {
-    document.getElementById('waiting').classList.toggle('is-invisible')
+    // document.getElementById('waiting').classList.toggle('is-invisible')
 
     return {
         type: 'PERFORMING_ACTION',
