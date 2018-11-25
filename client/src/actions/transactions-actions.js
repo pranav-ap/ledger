@@ -30,7 +30,12 @@ export const startGetAllTransactions = () => {
     return async (dispatch) => {
         try {
             dispatch(startAction())
-            let result = await axios.get('/api/transactions') || []
+
+            const headers = {
+                'x-auth': localStorage.getItem('x-auth')
+            }
+
+            let result = await axios.get('/api/transactions', { headers }) || []
 
             if (!result.data) {
                 throw new Error('Error in GET /api/transactions')
@@ -58,7 +63,12 @@ export const startAddTransaction = (transaction) => {
     return async (dispatch) => {
         try {
             dispatch(startAction())
-            let result = await axios.post('/api/transactions', transaction)
+
+            const headers = {
+                'x-auth': localStorage.getItem('x-auth')
+            }
+
+            let result = await axios.post('/api/transactions', transaction, { headers })
 
             if (!result.data) {
                 throw new Error('Error in POST /api/transactions')
@@ -85,7 +95,12 @@ export const startDeleteTransaction = (_id) => {
     return async (dispatch) => {
         try {
             dispatch(startAction())
-            let result = await axios.delete(`/api/transactions/${_id}`)
+
+            const headers = {
+                'x-auth': localStorage.getItem('x-auth')
+            }
+
+            let result = await axios.delete(`/api/transactions/${_id}`, { headers })
 
             if (!result.data) {
                 throw new Error('Error in DELETE /api/transactions')

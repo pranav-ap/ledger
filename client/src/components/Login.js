@@ -8,7 +8,6 @@ import { startLogin } from './../actions/auth-actions'
 class Login extends Component {
     handleLogin() {
         const { dispatch } = this.props
-        console.log('password : ', this.refs.password.value)
         dispatch(startLogin(this.refs.password.value))
     }
 

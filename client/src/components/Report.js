@@ -134,6 +134,6 @@ class Report extends Component {
 export default connect(state => {
   return {
     transactions: state.transactions.data,
-    startDate: state.user.startDate
+    startDate: state.auth.startDate
   }
 })(Report)

@@ -12,19 +12,19 @@ const generateAuthToken = (req, res, next) => {
         process.env.JWT_SECRET
     ).toString()
 
-    process.env.token = token
+    process.env.TOKEN = token
 
     return token
 }
 
 const removeAuthToken = (req, res, next) => {
-    process.env.token = ''
+    process.env.TOKEN = ''
 }
 
 const authenticate = (req, res, next) => {
     const token = req.header('x-auth')
 
-    if (token === process.env.token) {
+    if (token === process.env.TOKEN) {
         next()
     } else {
         res.status(400).send()

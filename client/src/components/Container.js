@@ -10,10 +10,10 @@ import { checkIfLoggedIn } from './../actions/auth-actions'
 import '../styles/App.scss'
 
 class Container extends Component {
-    componentDidMount() {
-        const { dispatch } = this.props
-        dispatch(checkIfLoggedIn())
-    }
+    // componentDidMount() {
+    //     const { dispatch } = this.props
+    //     dispatch(checkIfLoggedIn())
+    // }
 
     render() {
         if (this.props.loggedIn) {
