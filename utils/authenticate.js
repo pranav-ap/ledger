@@ -19,6 +19,7 @@ const generateAuthToken = (req, res, next) => {
 
 const removeAuthToken = (req, res, next) => {
     process.env.TOKEN = ''
+    next()
 }
 
 const authenticate = (req, res, next) => {

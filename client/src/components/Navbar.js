@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 import { startLogout } from './../actions/auth-actions'
 
@@ -16,8 +17,8 @@ class Navbar extends Component {
   }
 
   handleLogout() {
-    const { dispatch } = this.props;
-    dispatch(startLogout());
+    const { dispatch } = this.props
+    dispatch(startLogout())
   }
 
   render() {
@@ -53,4 +54,4 @@ class Navbar extends Component {
   }
 }
 
-export default connect()(Navbar)
+export default withRouter(connect()(Navbar))

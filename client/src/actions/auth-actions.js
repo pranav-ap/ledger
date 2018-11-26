@@ -53,7 +53,7 @@ const logout = () => {
     }
 }
 
-export const startLogout = () => {
+export const startLogout = (slf) => {
     return (dispatch) => {
         const headers = {
             'x-auth': localStorage.getItem('x-auth')
