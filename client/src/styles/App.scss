@@ -1,3 +1,24 @@
+.custom-title {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.Login {
+  background-color: inherit;
+
+  min-height: 80vh;
+  height: 70%;
+
+  margin: 5em;
+
+  .login-column {
+    margin: 0 auto;
+  }
+
+  .button {
+    margin-top: 1em;
+  }
+}
+
 .App {
   background-color: inherit;
 
@@ -11,10 +32,6 @@
     .custom-icon {
       font-size: 1.8em;
     }
-  }
-
-  .custom-title {
-    font-family: 'Source Sans Pro', sans-serif;
   }
 
   #waiting {
