@@ -1,28 +1,50 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+import SignInWidget from './SignInWidget';
+import { withAuth } from '@okta/okta-react';
 
-import '../styles/App.scss'
+export default withAuth(
+  class Login extends Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        authenticated: null
+      };
+      this.checkAuthentication();
+    }
 
-import { startLogin } from './../actions/auth-actions'
+    async checkAuthentication() {
+      const authenticated = await this.props.auth.isAuthenticated();
+      if (authenticated !== this.state.authenticated) {
+        this.setState({ authenticated });
+      }
+    }
 
-class Login extends Component {
-  handleLogin() {
-    const { dispatch } = this.props
-    dispatch(startLogin(this.refs.password.value))
+    componentDidUpdate() {
+      this.checkAuthentication();
+    }
+
+    onSuccess = res => {
+      return this.props.auth.redirect({
+        sessionToken: res.session.token
+      });
+    };
+
+    onError = err => {
+      console.log('error logging in', err);
+    };
+
+    render() {
+      if (this.state.authenticated === null) return null;
+      return this.state.authenticated ? (
+        <Redirect to={{ pathname: '/' }} />
+      ) : (
+          <SignInWidget
+            baseUrl={this.props.baseUrl}
+            onSuccess={this.onSuccess}
+            onError={this.onError}
+          />
+        );
+    }
   }
-
-  render() {
-    return (
-      <div className="columns is-mobile Login">
-        <div className="column login-column is-4">
-          <h1 className="title custom-title has-text-centered"><i className='fas fa-money-check-alt'></i>&nbsp;&nbsp;Ledger&nbsp;&nbsp;</h1>
-          <input className="input" type="password" id="password" ref="password" placeholder="Password" />
-          <a className='button is-primary is-pulled-right' onClick={() => this.handleLogin()}>Login</a>
-        </div>
-      </div>
-    )
-  }
-}
-
-export default withRouter(connect()(Login))
+);
