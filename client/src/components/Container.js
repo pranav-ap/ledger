@@ -24,19 +24,14 @@ class Container extends Component {
           redirect_uri={window.location.origin + '/implicit/callback'}
           onAuthRequired={onAuthRequired}
         >
-          <div className="App">
-            <div className="container">
-              <Route path="/" exact={true} component={Welcome} />
-              <SecureRoute path="/ledger" exact={true} component={Ledger} />
-              <Route
-                path="/login"
-                render={() => (
-                  <Login baseUrl="https://dev-654158.oktapreview.com" />
-                )}
-              />
-              <Route path="/implicit/callback" component={ImplicitCallback} />
-            </div>
-          </div>
+          <Route path="/" exact={true} component={Welcome} />
+          <Route
+            path="/login"
+            render={() => (
+              <Login baseUrl="https://dev-654158.oktapreview.com" />
+            )}
+          />
+          <Route path="/implicit/callback" component={ImplicitCallback} />
         </Security>
       </Router>
     )

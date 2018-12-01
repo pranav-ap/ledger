@@ -26,7 +26,7 @@ class Ledger extends Component {
           <Route path='/report' component={Report} />
           <Route path='/settings' component={Settings} />
           <Route path='/history' component={History} />
-          <Route path='/' component={Home} />
+          <Route exact path='/' component={Home} />
           <Redirect to='/' />
         </Switch>
         <i className='fas fa-spinner fa-spin is-invisible' id='waiting'></i>

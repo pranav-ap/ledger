@@ -1,11 +1,10 @@
 const express = require('express')
 const { ObjectId } = require('mongodb')
 const mongoUtils = require('../utils/mongo-utils')
-const { authenticate } = require('../utils/authenticate')
 
 const router = express.Router()
 
-router.get('/', authenticate, async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         let db = await mongoUtils.connectToDB()
         let result = await db
@@ -23,7 +22,7 @@ router.get('/', authenticate, async (req, res) => {
     }
 })
 
-router.post('/', authenticate, async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         let db = await mongoUtils.connectToDB()
         let result = await db
@@ -40,7 +39,7 @@ router.post('/', authenticate, async (req, res) => {
     }
 })
 
-router.delete('/:id', authenticate, async (req, res) => {
+router.delete('/:id', async (req, res) => {
     let _id = ObjectId(req.params.id)
 
     try {
