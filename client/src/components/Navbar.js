@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { NavLink, withRouter } from 'react-router-dom'
+import { withAuth } from '@okta/okta-react'
 
 class Navbar extends Component {
   componentDidMount() {
@@ -35,7 +36,8 @@ class Navbar extends Component {
           <div className='navbar-end'>
             <div className='navbar-item'>
               <div className='buttons'>
-                <a className='button is-primary is-rounded' onClick={() => { }}>Logout</a>
+                <a className='button is-primary is-rounded'
+                  onClick={() => this.props.auth.logout('/')}>Logout</a>
               </div>
             </div>
           </div>
@@ -45,5 +47,5 @@ class Navbar extends Component {
   }
 }
 
-export default withRouter(Navbar)
+export default withAuth(withRouter(Navbar))
 
