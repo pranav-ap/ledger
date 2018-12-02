@@ -9,7 +9,9 @@ class SignInWidget extends Component {
         const el = ReactDOM.findDOMNode(this);
         this.widget = new OktaSignIn({
             baseUrl: this.props.baseUrl,
-            logo: 'logo.png'
+            logo: 'logo.png',
+            'features.registration': true,
+            'authScheme': 'SESSION'
         });
         this.widget.renderEl({ el }, this.props.onSuccess, this.props.onError);
     }

@@ -3,6 +3,7 @@ import { Route, withRouter } from 'react-router-dom'
 import { Security, SecureRoute, ImplicitCallback } from '@okta/okta-react'
 
 import Login from './Login'
+import RegistrationForm from './RegistrationForm'
 import Welcome from './Welcome'
 import Navbar from './Navbar'
 import Home from './Home'
@@ -28,6 +29,7 @@ class Container extends Component {
         >
           <Route path="/" exact={true} component={Welcome} />
           <Route path="/implicit/callback" component={ImplicitCallback} />
+          <Route path="/register" exact={true} component={RegistrationForm} />
           <Route path="/login" exact={true}
             render={() => (
               <Login baseUrl="https://dev-654158.oktapreview.com" />
