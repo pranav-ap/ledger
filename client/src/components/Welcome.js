@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import { withRouter, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
 import { withAuth } from '@okta/okta-react'
-import { compose } from 'recompose'
+
+import { startGetAllTransactions } from './../actions/transactions-actions'
 
 class Welcome extends Component {
   constructor(props) {
@@ -33,22 +35,19 @@ class Welcome extends Component {
   }
 
   render() {
-    if (this.state.authenticated)
+    if (this.state.authenticated) {
+      const { dispatch } = this.props
+      dispatch(startGetAllTransactions())
       return <Redirect to={{ pathname: '/home' }} />
+    }
 
     return (
       <div>
-        <p className="lead">
-          Welcome
-          </p>
-        <button onClick={this.login}>
-          Login
-          </button>
+        <p className="lead">Welcome</p>
+        <button onClick={this.login}>Login</button>
       </div>
     )
   }
 }
 
-export default compose(
-  withAuth
-)(Welcome)
+export default withAuth(connect()(Welcome))

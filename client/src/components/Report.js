@@ -133,7 +133,6 @@ class Report extends Component {
 
 export default connect(state => {
   return {
-    transactions: state.transactions.data,
-    startDate: state.auth.startDate
+    transactions: state.transactions.data
   }
 })(Report)

@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
-import { Redirect, withRouter } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
 import SignInWidget from './SignInWidget'
 import { withAuth } from '@okta/okta-react'
-import { compose } from 'recompose'
+
+import { startGetAllTransactions } from './../actions/transactions-actions'
 
 class Login extends Component {
   constructor(props) {
@@ -36,18 +38,20 @@ class Login extends Component {
   }
 
   render() {
-    return this.state.authenticated ? (
-      <Redirect to={{ pathname: '/home' }} />
-    ) : (
-        <SignInWidget
-          baseUrl={this.props.baseUrl}
-          onSuccess={this.onSuccess}
-          onError={this.onError}
-        />
-      )
+    if (this.state.authenticated) {
+      const { dispatch } = this.props
+      dispatch(startGetAllTransactions())
+      return <Redirect to={{ pathname: '/home' }} />
+    }
+
+    return (
+      <SignInWidget
+        baseUrl={this.props.baseUrl}
+        onSuccess={this.onSuccess}
+        onError={this.onError}
+      />
+    )
   }
 }
 
-export default compose(
-  withAuth
-)(Login)
+export default withAuth(connect()(Login))
