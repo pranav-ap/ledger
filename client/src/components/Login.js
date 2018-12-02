@@ -37,8 +37,15 @@ class Login extends Component {
     console.log('error logging in', err)
   }
 
+  async setToken() {
+    const token = await this.props.auth.getAccessToken()
+    localStorage.setItem('x-auth', token)
+  }
+
   render() {
     if (this.state.authenticated) {
+      this.setToken()
+
       const { dispatch } = this.props
       dispatch(startGetAllTransactions())
       return <Redirect to={{ pathname: '/home' }} />

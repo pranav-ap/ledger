@@ -34,8 +34,16 @@ class Welcome extends Component {
     this.props.auth.logout('/')
   }
 
+
+  async setToken() {
+    const token = await this.props.auth.getAccessToken()
+    localStorage.setItem('x-auth', token)
+  }
+
   render() {
     if (this.state.authenticated) {
+      this.setToken()
+
       const { dispatch } = this.props
       dispatch(startGetAllTransactions())
       return <Redirect to={{ pathname: '/home' }} />
@@ -43,7 +51,7 @@ class Welcome extends Component {
 
     return (
       <div>
-        <p className="lead">Welcome</p>
+        <h1>Welcome</h1>
         <button onClick={this.login}>Login</button>
       </div>
     )

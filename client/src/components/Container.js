@@ -22,7 +22,7 @@ class Container extends Component {
       <div className='App'>
         <Security
           issuer="https://dev-654158.oktapreview.com/oauth2/default"
-          client_id="0oahyyfujmLohEuhq0h7"
+          client_id='0oahyyfujmLohEuhq0h7'
           redirect_uri={window.location.origin + '/implicit/callback'}
           onAuthRequired={onAuthRequired}
         >
