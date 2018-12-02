@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { NavLink, withRouter } from 'react-router-dom'
 
 class Navbar extends Component {
@@ -28,7 +27,7 @@ class Navbar extends Component {
 
         <div id='navbar-menu-custom' className='navbar-menu has-background-warning is-shadowless'>
           <div className='navbar-start'>
-            <NavLink to='/' className='navbar-item'>Home</NavLink>
+            <NavLink to='/home' className='navbar-item'>Home</NavLink>
             <NavLink to='/history' className='navbar-item'>History</NavLink>
             <NavLink to='/report' className='navbar-item'>Report</NavLink>
             <NavLink to='/settings' className='navbar-item'>Settings</NavLink>
@@ -46,4 +45,5 @@ class Navbar extends Component {
   }
 }
 
-export default withRouter(connect()(Navbar))
+export default withRouter(Navbar)
+

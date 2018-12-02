@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 import { withAuth } from '@okta/okta-react'
-import { Link } from 'react-router-dom'
 import { compose } from 'recompose'
-
-import Ledger from './Ledger'
 
 class Welcome extends Component {
   constructor(props) {
@@ -37,14 +34,14 @@ class Welcome extends Component {
 
   render() {
     if (this.state.authenticated)
-      return <Ledger />
+      return <Redirect to={{ pathname: '/home' }} />
 
     return (
       <div>
         <p className="lead">
           Welcome
           </p>
-        <button className="btn btn-dark btn-lg" onClick={this.login}>
+        <button onClick={this.login}>
           Login
           </button>
       </div>
@@ -53,6 +50,5 @@ class Welcome extends Component {
 }
 
 export default compose(
-  withRouter,
   withAuth
 )(Welcome)
