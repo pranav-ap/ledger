@@ -110,6 +110,10 @@
   .Settings {
     .settings-column {
       margin: 0 auto;
+
+      .field-body {
+        flex-grow: 3;
+      }
     }
   }
 }
