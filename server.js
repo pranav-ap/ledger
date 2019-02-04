@@ -1,5 +1,3 @@
-require('dotenv').config()
-
 const express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser')
@@ -8,13 +6,11 @@ const app = express()
 const port = process.env.PORT
 
 const transactionsRouter = require('./routers/transactions-router')
-const authRouter = require('./routers/auth-router')
 
 app.use(express.static(path.resolve(__dirname, 'client', 'build')))
 app.use(bodyParser.json())
 
 app.use('/api/transactions', transactionsRouter)
-app.use('/api/auth', authRouter)
 
 // error handling middleware
 app.use((err, req, res, next) => {
