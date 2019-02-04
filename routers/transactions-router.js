@@ -1,38 +1,20 @@
-const db = require('./../utils/db.js')
 const express = require('express')
+const shortid = require('shortid')
 const router = express.Router()
 
-router.get('/', async (req, res) => {
-    return db
-        .get('posts')
-        .find({})
-        .value()
-})
+const db = require('./../db/db.js')
 
-router.post('/', async (req, res) => {
-    return db
-        .get('posts')
-        .push({ id: 1, title: 'lowdb is awesome' })
-        .write()
-})
+const tran = 'transactions'
 
-router.delete('/:id', async (req, res) => {
-    let _id = ObjectId(req.params.id)
+router.get('/', (req, res) => db.get(tran).value())
 
-    try {
-        let db = await mongoUtils.connectToDB()
-        let result = await db
-            .collection('transactions')
-            .findOneAndDelete({ _id })
+router.post('/', (req, res) => db
+    .get(tran)
+    .push({ id: shortid.generate(), ...req.body })
+    .write())
 
-        if (!result.ok) {
-            throw new Error('Unable to delete transaction doc from transactions collection')
-        }
+router.delete('/:id', (req, res) => db.get(tran).remove({ id: req.params.id }).write())
 
-        res.status(200).send(result['value'])
-    } catch (e) {
-        res.status(400).send(e)
-    }
-})
+router.patch('/:id', (req, res) => db.get(tran).find({ id: req.params.id }).assign(req.body).write())
 
 module.exports = router

@@ -2,6 +2,9 @@ const express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser')
 
+const db = require('./db/db.js')
+db.init()
+
 const app = express()
 const port = process.env.PORT
 
