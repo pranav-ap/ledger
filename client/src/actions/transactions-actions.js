@@ -57,6 +57,7 @@ export const startAddTransaction = (transaction) => {
             dispatch(startAction())
 
             let result = await axios.post('/api/transactions', transaction)
+            console.log(result)
 
             if (!result) {
                 throw new Error('Error in POST /api/transactions')
