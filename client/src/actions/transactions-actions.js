@@ -1,8 +1,6 @@
 import axios from 'axios'
 
 const startAction = () => {
-    // document.getElementById('waiting').classList.toggle('is-invisible')
-
     return {
         type: 'PERFORMING_ACTION',
         isPerformingAction: true
@@ -10,8 +8,6 @@ const startAction = () => {
 }
 
 const stopAction = () => {
-    // document.getElementById('waiting').classList.toggle('is-invisible')
-
     return {
         type: 'PERFORMING_ACTION',
         isPerformingAction: false
@@ -31,17 +27,13 @@ export const startGetAllTransactions = () => {
         try {
             dispatch(startAction())
 
-            const headers = {
-                'x-auth': localStorage.getItem('x-auth')
-            }
+            let result = await axios.get('/api/transactions')
 
-            let result = await axios.get('/api/transactions', { headers }) || []
-
-            if (!result.data) {
+            if (!result) {
                 throw new Error('Error in GET /api/transactions')
             }
 
-            dispatch(getAllTransactions(result.data))
+            dispatch(getAllTransactions(result))
         } catch (e) {
             console.log(e)
             dispatch(getAllTransactions([]))
@@ -64,17 +56,13 @@ export const startAddTransaction = (transaction) => {
         try {
             dispatch(startAction())
 
-            const headers = {
-                'x-auth': localStorage.getItem('x-auth')
-            }
+            let result = await axios.post('/api/transactions', transaction)
 
-            let result = await axios.post('/api/transactions', transaction, { headers })
-
-            if (!result.data) {
+            if (!result) {
                 throw new Error('Error in POST /api/transactions')
             }
 
-            dispatch(addTransaction(result.data))
+            dispatch(addTransaction(result))
         } catch (e) {
             console.log(e)
         } finally {
@@ -84,29 +72,54 @@ export const startAddTransaction = (transaction) => {
 }
 
 // DELETE TRANSACTION
-const deleteTransaction = (_id) => {
+const deleteTransaction = (id) => {
     return {
         type: 'DELETE_TRANSACTION',
-        _id
+        id
     }
 }
 
-export const startDeleteTransaction = (_id) => {
+export const startDeleteTransaction = (id) => {
     return async (dispatch) => {
         try {
             dispatch(startAction())
 
-            const headers = {
-                'x-auth': localStorage.getItem('x-auth')
-            }
+            let result = await axios.delete(`/api/transactions/${id}`)
 
-            let result = await axios.delete(`/api/transactions/${_id}`, { headers })
-
-            if (!result.data) {
+            if (!result) {
                 throw new Error('Error in DELETE /api/transactions')
             }
 
-            dispatch(deleteTransaction(_id))
+            dispatch(deleteTransaction(id))
+        } catch (e) {
+            console.log(e)
+        } finally {
+            dispatch(stopAction())
+        }
+    }
+}
+
+// UPDATE TRANSACTION
+const updateTransaction = (id, updatedData) => {
+    return {
+        type: 'UPDATE_TRANSACTION',
+        id,
+        updatedData
+    }
+}
+
+export const startUpdateTransaction = (id, updatedData) => {
+    return async (dispatch) => {
+        try {
+            dispatch(startAction())
+
+            let result = await axios.patch(`/api/transactions/${id}`)
+
+            if (!result) {
+                throw new Error('Error in PATCH /api/transactions')
+            }
+
+            dispatch(updateTransaction(id, updatedData))
         } catch (e) {
             console.log(e)
         } finally {

@@ -11,7 +11,6 @@ class HomeInput extends Component {
     this.state = {
       item: '',
       expense: 0,
-      income: 0,
       date: moment().format('Do MMMM YYYY')
     }
   }

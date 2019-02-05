@@ -1,0 +1,25 @@
+{
+  "transactions": [
+    {
+      "id": "QV0jXMrYI",
+      "item": "chicken",
+      "expense": 123,
+      "income": 0,
+      "date": "5th February 2019"
+    },
+    {
+      "id": "Ben2cDWcC",
+      "item": "tyty",
+      "expense": 888,
+      "income": 0,
+      "date": "5th February 2019"
+    },
+    {
+      "id": "Ig6OJLbfA",
+      "item": "tt",
+      "expense": 77,
+      "income": 0,
+      "date": "5th February 2019"
+    }
+  ]
+}

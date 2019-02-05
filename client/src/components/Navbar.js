@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import { startLogout } from './../actions/auth-actions'
 
 class Navbar extends Component {
   componentDidMount() {
@@ -14,11 +13,6 @@ class Navbar extends Component {
       burgerElement.classList.toggle('is-active')
       menuElement.classList.toggle('is-active')
     })
-  }
-
-  handleLogout() {
-    const { dispatch } = this.props
-    dispatch(startLogout())
   }
 
   render() {
@@ -38,15 +32,6 @@ class Navbar extends Component {
           <div className='navbar-start'>
             <NavLink to='/' className='navbar-item'>Home</NavLink>
             <NavLink to='/history' className='navbar-item'>History</NavLink>
-            <NavLink to='/report' className='navbar-item'>Report</NavLink>
-            <NavLink to='/settings' className='navbar-item'>Settings</NavLink>
-          </div>
-          <div className='navbar-end'>
-            <div className='navbar-item'>
-              <div className='buttons'>
-                <a className='button is-primary is-rounded' onClick={() => this.handleLogout()}>Logout</a>
-              </div>
-            </div>
           </div>
         </div>
       </nav>
