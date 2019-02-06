@@ -4,16 +4,31 @@ import { connect } from 'react-redux'
 import { startUpdateTransaction, startDeleteTransaction } from './../actions/transactions-actions'
 
 class CashTable extends Component {
+  handleDoubleClick(element) {
+    element.contentEditable = true
+    console.log(element)
+
+    setTimeout(function() {
+      if (document.activeElement !== element) {
+        element.contentEditable = false
+      }
+    }, 300)
+  }
+
+  static handleBlur(element) {
+    element.contentEditable = false
+  }
+
   renderRows() {
     const { transactions, dispatch } = this.props
 
     if (transactions.length === 0) {
       return (
         <tr>
-          <th></th>
+          <th/>
           <td>No transactions on this day.</td>
-          <td></td>
-          <td></td>
+          <td/>
+          <td/>
         </tr>
       )
     }
@@ -28,7 +43,7 @@ class CashTable extends Component {
           <th>{count}</th>
           <td>{transaction.item}</td>
           <td>{transaction.expense}</td>
-          <td onClick={() => dispatch(startDeleteTransaction(transaction.id))}><i className='far fa-trash-alt delete-btn'></i></td>
+          <td><i className='far fa-trash-alt delete-btn'/></td>
         </tr>
       )
     })
@@ -43,7 +58,7 @@ class CashTable extends Component {
               <th>No</th>
               <th>Item</th>
               <th>Cash</th>
-              <th></th>
+              <th/>
             </tr>
           </thead>
           <tbody>

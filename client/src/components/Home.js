@@ -12,9 +12,11 @@ class Home extends Component {
     const today = moment().format('Do MMMM YYYY')
     let total = 0
 
-    transactions.forEach(transaction => {
-      total += transaction.date === today ? transaction.expense : 0
-    })
+    if (transactions) {
+      transactions.forEach(transaction => {
+        total += transaction.date === today ? transaction.expense : 0
+      })
+    }
 
     return total
   }

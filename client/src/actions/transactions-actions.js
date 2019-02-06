@@ -29,11 +29,11 @@ export const startGetAllTransactions = () => {
 
             let result = await axios.get('/api/transactions')
 
-            if (!result) {
+            if (!result.data) {
                 throw new Error('Error in GET /api/transactions')
             }
 
-            dispatch(getAllTransactions(result))
+            dispatch(getAllTransactions(result.data))
         } catch (e) {
             console.log(e)
             dispatch(getAllTransactions([]))
@@ -59,11 +59,11 @@ export const startAddTransaction = (transaction) => {
             let result = await axios.post('/api/transactions', transaction)
             console.log(result)
 
-            if (!result) {
+            if (!result.data) {
                 throw new Error('Error in POST /api/transactions')
             }
 
-            dispatch(addTransaction(result))
+            dispatch(addTransaction(result.data))
         } catch (e) {
             console.log(e)
         } finally {
@@ -87,7 +87,7 @@ export const startDeleteTransaction = (id) => {
 
             let result = await axios.delete(`/api/transactions/${id}`)
 
-            if (!result) {
+            if (!result.data) {
                 throw new Error('Error in DELETE /api/transactions')
             }
 
@@ -116,7 +116,7 @@ export const startUpdateTransaction = (id, updatedData) => {
 
             let result = await axios.patch(`/api/transactions/${id}`)
 
-            if (!result) {
+            if (!result.data) {
                 throw new Error('Error in PATCH /api/transactions')
             }
 
