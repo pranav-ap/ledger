@@ -1,24 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { startUpdateTransaction, startDeleteTransaction } from './../actions/transactions-actions'
+import { startDeleteTransaction } from './../actions/transactions-actions'
 
 class CashTable extends Component {
-  handleDoubleClick(element) {
-    element.contentEditable = true
-    console.log(element)
-
-    setTimeout(function() {
-      if (document.activeElement !== element) {
-        element.contentEditable = false
-      }
-    }, 300)
-  }
-
-  static handleBlur(element) {
-    element.contentEditable = false
-  }
-
   renderRows() {
     const { transactions, dispatch } = this.props
 
@@ -43,7 +28,7 @@ class CashTable extends Component {
           <th>{count}</th>
           <td>{transaction.item}</td>
           <td>{transaction.expense}</td>
-          <td><i className='far fa-trash-alt delete-btn'/></td>
+          <td onClick={() => dispatch(startDeleteTransaction(transaction.id))}><i className='far fa-trash-alt delete-btn'/></td>
         </tr>
       )
     })
@@ -54,15 +39,15 @@ class CashTable extends Component {
       <div className='CashTable'>
         <table className='table is-striped is-hoverable is-fullwidth'>
           <thead>
-            <tr>
-              <th>No</th>
-              <th>Item</th>
-              <th>Cash</th>
-              <th/>
-            </tr>
+          <tr>
+            <th>No</th>
+            <th>Item</th>
+            <th>Cash</th>
+            <th/>
+          </tr>
           </thead>
           <tbody>
-            {this.renderRows()}
+          {this.renderRows()}
           </tbody>
         </table>
       </div>
