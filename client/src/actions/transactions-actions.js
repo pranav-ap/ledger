@@ -57,7 +57,6 @@ export const startAddTransaction = (transaction) => {
             dispatch(startAction())
 
             let result = await axios.post('/api/transactions', transaction)
-            console.log(result)
 
             if (!result.data) {
                 throw new Error('Error in POST /api/transactions')
@@ -114,13 +113,13 @@ export const startUpdateTransaction = (id, updatedData) => {
         try {
             dispatch(startAction())
 
-            let result = await axios.patch(`/api/transactions/${id}`)
+            let result = await axios.patch(`/api/transactions/${id}`, { ...updatedData })
 
             if (!result.data) {
                 throw new Error('Error in PATCH /api/transactions')
             }
 
-            dispatch(updateTransaction(id, updatedData))
+            dispatch(updateTransaction(id, result.data))
         } catch (e) {
             console.log(e)
         } finally {

@@ -23,7 +23,6 @@ router.delete('/:id', (req, res) => {
 
 router.patch('/:id', (req, res) => {
     let result = db.get(tran).find({ id: req.params.id }).assign(req.body).write()
-    console.log('patch result', result)
     res.send(result)
 })
 

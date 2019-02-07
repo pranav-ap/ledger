@@ -21,11 +21,11 @@ class CashTable extends Component {
 
     const handleEdit = (transaction) => {
       let row = document.getElementById(transaction.id)
+      let editable = !(row.cells[1].contentEditable === 'true')
 
-      row.cells[1].contentEditable = !row.cells[1].contentEditable
-      row.cells[2].contentEditable = !row.cells[2].contentEditable
+      row.cells[1].contentEditable = row.cells[2].contentEditable = editable
 
-      if (row.cells[1].contentEditable === false) {
+      if (!editable) {
         transaction = {
           ...transaction,
           item: row.cells[1].innerText,
@@ -35,7 +35,7 @@ class CashTable extends Component {
         dispatch(startUpdateTransaction(transaction.id, transaction))
       }
 
-      if (row.cells[1].contentEditable === true) {
+      if (editable) {
         row.cells[1].focus()
       }
     }
