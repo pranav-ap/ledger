@@ -2,23 +2,6 @@
   font-family: 'Source Sans Pro', sans-serif;
 }
 
-.Login {
-  background-color: inherit;
-
-  min-height: 80vh;
-  height: 70%;
-
-  margin: 5em;
-
-  .login-column {
-    margin: 0 auto;
-  }
-
-  .button {
-    margin-top: 1em;
-  }
-}
-
 .App {
   background-color: inherit;
 
@@ -72,18 +55,43 @@
   }
 
   .CashTable {
+    .row-btn {
+      padding: 0.5em 0.1em;
+    }
+
     i {
       opacity: 0.3;
       &:hover {
         cursor: pointer;
-        color: red;
         opacity: 1;
+      }
+    }
+
+    .delete-btn {
+      &:hover {
+        color: #ff443c;
+      }
+    }
+
+    .edit-btn {
+      &:hover {
+        color: #12c4ff;
+      }
+    }
+
+    .save-btn {
+      &:hover {
+        color: #f9ff1b;
       }
     }
 
     table, th, td {
       background-color: inherit;
       text-transform: capitalize;
+    }
+
+    .no-transactions {
+
     }
   }
 
@@ -94,26 +102,6 @@
 
     .date-title {
       text-decoration: underline #00d1b2;
-    }
-  }
-
-  .Report {
-    .report-column {
-      margin: 0 auto;
-    }
-
-    #heatmap {
-      overflow-x: auto;
-    }
-  }
-
-  .Settings {
-    .settings-column {
-      margin: 0 auto;
-
-      .field-body {
-        flex-grow: 3;
-      }
     }
   }
 }

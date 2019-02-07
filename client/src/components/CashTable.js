@@ -11,11 +11,20 @@ class CashTable extends Component {
       return (
         <tr>
           <th/>
-          <td>No transactions on this day.</td>
+          <td className='no-transactions'>No transactions on this day.</td>
+          <td/>
           <td/>
           <td/>
         </tr>
       )
+    }
+
+    const handleEdit = (e) => {
+      console.log(e)
+    }
+
+    const handleSave = (e) => {
+      console.log(e)
     }
 
     let count = 0
@@ -28,7 +37,12 @@ class CashTable extends Component {
           <th>{count}</th>
           <td>{transaction.item}</td>
           <td>{transaction.expense}</td>
-          <td onClick={() => dispatch(startDeleteTransaction(transaction.id))}><i className='far fa-trash-alt delete-btn'/></td>
+          <td
+            className='row-btn'
+            onClick={() => dispatch(startDeleteTransaction(transaction.id))}><i className='far fa-trash-alt delete-btn'/></td>
+          <td
+            className='row-btn'
+            onClick={(e) => handleEdit(e)}><i className='far fa-edit edit-btn'/></td>
         </tr>
       )
     })
@@ -43,7 +57,8 @@ class CashTable extends Component {
             <th>No</th>
             <th>Item</th>
             <th>Cash</th>
-            <th/>
+            <th>&nbsp;</th>
+            <th>&nbsp;</th>
           </tr>
           </thead>
           <tbody>
