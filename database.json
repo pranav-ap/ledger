@@ -1,15 +1,9 @@
 {
   "transactions": [
     {
-      "id": "bkb2LA5C4",
-      "item": "pizza",
-      "expense": 273,
-      "date": "7th February 2019"
-    },
-    {
-      "id": "4t3OEa8zK",
-      "item": "atm",
-      "expense": 200,
+      "id": "2MDm2QqA9",
+      "item": "wewe",
+      "expense": 3434,
       "date": "7th February 2019"
     }
   ]
