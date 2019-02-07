@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
 import moment from 'moment'
 
 import CashTable from './CashTable'
@@ -24,9 +24,7 @@ class Home extends Component {
   getTodaysTransactions() {
     const { transactions } = this.props
     const today = moment().format('Do MMMM YYYY')
-    let todaysTransactions = transactions.filter(transaction => transaction.date === today)
-
-    return todaysTransactions
+    return transactions.filter(transaction => transaction.date === today)
   }
 
   render() {
