@@ -11,18 +11,6 @@
       "item": "bus",
       "expense": 23,
       "date": "8th February 2019"
-    },
-    {
-      "id": "ZzJHwTK0T",
-      "item": "bike",
-      "expense": 121313,
-      "date": "8th February 2019"
-    },
-    {
-      "id": "pMz653EjV",
-      "item": "yatch",
-      "expense": 676767,
-      "date": "8th February 2019"
     }
   ]
 }

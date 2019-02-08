@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b03dcac3-ed7a-49c7-af44-15105b061ba4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database.json" beforeDir="false" afterPath="$PROJECT_DIR$/database.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/QuickInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/QuickInfo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.js" beforeDir="false" afterPath="$PROJECT_DIR$/db.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
@@ -23,10 +23,13 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/db.js">
+        <entry file="file://$PROJECT_DIR$/client/src/components/QuickInfo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="23" column="17" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
+            <state relative-caret-position="75">
+              <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+              <folding>
+                <element signature="e#0#40#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -71,7 +74,6 @@
         <option value="$PROJECT_DIR$/client/src/components/CashTable.js" />
         <option value="$PROJECT_DIR$/routers/transactions-router.js" />
         <option value="$PROJECT_DIR$/client/src/actions/transactions-actions.js" />
-        <option value="$PROJECT_DIR$/client/src/components/QuickInfo.js" />
         <option value="$PROJECT_DIR$/client/src/components/Home.js" />
         <option value="$PROJECT_DIR$/client/src/components/Navbar.js" />
         <option value="$PROJECT_DIR$/client/src/components/Container.js" />
@@ -80,6 +82,7 @@
         <option value="$PROJECT_DIR$/client/src/styles/App.scss" />
         <option value="$PROJECT_DIR$/client/src/components/Visual.js" />
         <option value="$PROJECT_DIR$/db.js" />
+        <option value="$PROJECT_DIR$/client/src/components/QuickInfo.js" />
       </list>
     </option>
   </component>
@@ -103,6 +106,24 @@
             <path>
               <item name="ledger" type="b2602c69:ProjectViewProjectNode" />
               <item name="ledger" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ledger" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ledger" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ledger" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ledger" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ledger" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ledger" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ledger" type="b2602c69:ProjectViewProjectNode" />
@@ -181,7 +202,7 @@
       <workItem from="1549389310074" duration="1196000" />
       <workItem from="1549453617514" duration="17731000" />
       <workItem from="1549539884854" duration="11896000" />
-      <workItem from="1549627821859" duration="10384000" />
+      <workItem from="1549627821859" duration="10677000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1549473373048</created>
@@ -246,11 +267,18 @@
       <option name="project" value="LOCAL" />
       <updated>1549638109310</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="encrypt update">
+      <created>1549639353349</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1549639353349</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41207000" />
+    <option name="totallyTimeSpent" value="41500000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -297,7 +325,8 @@
     <MESSAGE value="chart setup" />
     <MESSAGE value="fixed mount and update for chart" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="encrypt update" />
+    <option name="LAST_COMMIT_MESSAGE" value="encrypt update" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.gitignore">
@@ -346,16 +375,6 @@
             <element signature="e#53#143#0" />
             <element signature="e#170#261#0" />
             <element signature="e#332#413#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/QuickInfo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="12" column="16" lean-forward="true" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -411,27 +430,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/History.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="40" column="12" lean-forward="true" selection-start-line="40" selection-start-column="12" selection-end-line="40" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/Visual.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-23">
-          <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-            <element signature="e#1018#1154#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/styles/App.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1452">
@@ -470,8 +468,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/db.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="23" column="17" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
+        <state relative-caret-position="125">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/Visual.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1175">
+          <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+            <element signature="e#1018#1154#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/History.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="40" column="12" lean-forward="true" selection-start-line="40" selection-start-column="12" selection-end-line="40" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/QuickInfo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

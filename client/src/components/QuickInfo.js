@@ -3,7 +3,6 @@ import moment from 'moment'
 
 class QuickInfo extends Component {
   render() {
-    console.log(this.props)
     return (
       <nav className='level QuickInfo'>
         <div className='level-item has-text-centered'>
