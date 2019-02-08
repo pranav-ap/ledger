@@ -5,6 +5,12 @@
       "item": "Yy",
       "expense": "123",
       "date": "7th February 2019"
+    },
+    {
+      "id": "cictCoYck",
+      "item": "bus",
+      "expense": 23,
+      "date": "8th February 2019"
     }
   ]
 }

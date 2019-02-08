@@ -5,6 +5,7 @@ import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
 import Navbar from './Navbar'
 import Home from './Home'
 import History from './History'
+import Visual from './Visual'
 
 import '../styles/App.scss'
 
@@ -21,6 +22,7 @@ class Container extends Component {
       <div className='App'>
         <Navbar />
         <Switch>
+          <Route path='/visual' component={Visual} />
           <Route path='/history' component={History} />
           <Route path='/' component={Home} />
           <Redirect to='/' />

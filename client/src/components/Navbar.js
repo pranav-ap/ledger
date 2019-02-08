@@ -19,12 +19,12 @@ class Navbar extends Component {
     return (
       <nav className='navbar is-warning navbar-custom' role='navigation' aria-label='main navigation'>
         <div className='navbar-brand'>
-          <a className='navbar-item custom-icon'><i className='fas fa-money-check-alt'></i>&nbsp;&nbsp;Ledger&nbsp;&nbsp;</a>
+          <a className='navbar-item custom-icon'><i className='fas fa-money-check-alt'/>&nbsp;&nbsp;Ledger&nbsp;&nbsp;</a>
 
           <a role='button' className='navbar-burger' aria-label='menu' aria-expanded='false'>
-            <span aria-hidden='true'></span>
-            <span aria-hidden='true'></span>
-            <span aria-hidden='true'></span>
+            <span aria-hidden='true'/>
+            <span aria-hidden='true'/>
+            <span aria-hidden='true'/>
           </a>
         </div>
 
@@ -32,6 +32,7 @@ class Navbar extends Component {
           <div className='navbar-start'>
             <NavLink to='/' className='navbar-item'>Home</NavLink>
             <NavLink to='/history' className='navbar-item'>History</NavLink>
+            <NavLink to='/visual' className='navbar-item'>Visual</NavLink>
           </div>
         </div>
       </nav>
