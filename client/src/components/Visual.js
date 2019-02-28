@@ -8,7 +8,7 @@ class Visual extends Component {
     return (
       <div className='columns is-mobile Visual'>
         <div className='column visual-column is-8'>
-          <h1 className='title custom-title'>Daily Heatmap</h1>
+          <h1 className='title custom-title'>Day-to-day Heatmap</h1>
 
           <Calendar
             width={900}
