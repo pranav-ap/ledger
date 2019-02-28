@@ -2,8 +2,8 @@
   "transactions": [
     {
       "id": "2MDm2QqA9",
-      "item": "Yy",
-      "expense": "123",
+      "item": "Hi",
+      "expense": "555",
       "date": "7th February 2019"
     },
     {
@@ -11,6 +11,30 @@
       "item": "bus",
       "expense": 23,
       "date": "8th February 2019"
+    },
+    {
+      "id": "sMAyNZQxO",
+      "item": "gta 5",
+      "expense": 920,
+      "date": "9th February 2019"
+    },
+    {
+      "id": "nLTRetfOh",
+      "item": "biriyani",
+      "expense": 150,
+      "date": "28th February 2019"
+    },
+    {
+      "id": "SHAdy7K2Q",
+      "item": "banana",
+      "expense": 30,
+      "date": "28th February 2019"
+    },
+    {
+      "id": "FtWDLB7ef",
+      "item": "oreos",
+      "expense": 30,
+      "date": "28th February 2019"
     }
   ]
 }
