@@ -5,7 +5,8 @@ import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
 import Navbar from './Navbar'
 import Home from './Home'
 import History from './History'
-import Visual from './Visual'
+import Heatmap from './Heatmap'
+import BarChart from './BarChart'
 
 import '../styles/App.scss'
 
@@ -22,7 +23,8 @@ class Container extends Component {
       <div className='App'>
         <Navbar />
         <Switch>
-          <Route path='/visual' component={Visual} />
+          <Route path='/heatmap' component={Heatmap} />
+          <Route path='/barchart' component={BarChart} />
           <Route path='/history' component={History} />
           <Route path='/' component={Home} />
           <Redirect to='/' />

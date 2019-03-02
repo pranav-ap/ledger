@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import moment from 'moment'
-import { ResponsiveBar } from '@nivo/bar'
 import { Calendar } from '@nivo/calendar'
 
-class Visual extends Component {
+class Heatmap extends Component {
   render() {
     const { transactions } = this.props
     let calendarData = transactions.map(t => {
@@ -17,7 +16,7 @@ class Visual extends Component {
     return (
       <div className='columns is-mobile Visual'>
         <div className='column visual-column is-8'>
-          <h1 className='title custom-title'>Day-to-day Heatmap</h1>
+          <h1 className='title custom-title'>Heatmap</h1>
 
           <Calendar
             width={900}
@@ -42,4 +41,4 @@ export default connect(state => {
   return {
     transactions: state.transactions.data
   }
-})(Visual)
+})(Heatmap)

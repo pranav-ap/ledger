@@ -32,7 +32,8 @@ class Navbar extends Component {
           <div className='navbar-start'>
             <NavLink to='/' className='navbar-item'>Home</NavLink>
             <NavLink to='/history' className='navbar-item'>History</NavLink>
-            <NavLink to='/visual' className='navbar-item'>Visual</NavLink>
+            <NavLink to='/heatmap' className='navbar-item'>Heatmap</NavLink>
+            <NavLink to='/barchart' className='navbar-item'>Bar Chart</NavLink>
           </div>
         </div>
       </nav>
