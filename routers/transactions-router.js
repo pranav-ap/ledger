@@ -12,7 +12,12 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-    let result = db.get(tran).push({ id: shortid.generate(), ...req.body }).write()
+    let result = db.get(tran).push({
+        id: shortid.generate(),
+        ...req.body,
+        expense: Number(req.body.expense)
+    }).write()
+
     res.send(result[result.length - 1])
 })
 
@@ -22,7 +27,11 @@ router.delete('/:id', (req, res) => {
 })
 
 router.patch('/:id', (req, res) => {
-    let result = db.get(tran).find({ id: req.params.id }).assign(req.body).write()
+    let result = db.get(tran).find({ id: req.params.id }).assign({
+        ...req.body,
+        expense: Number(req.body.expense)
+    }).write()
+
     res.send(result)
 })
 
