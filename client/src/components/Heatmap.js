@@ -16,7 +16,7 @@ class Heatmap extends Component {
     return (
       <div className='columns is-mobile Visual'>
         <div className='column visual-column is-8'>
-          <h1 className='title custom-title'>Heatmap</h1>
+          <h1 className='title custom-title'>Day-to-Day Heatmap</h1>
 
           <Calendar
             width={900}

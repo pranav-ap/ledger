@@ -41,6 +41,12 @@
       "item": "Auto",
       "expense": 120,
       "date": "2nd March 2019"
+    },
+    {
+      "id": "P5PAA5jdj",
+      "item": "water",
+      "expense": 70,
+      "date": "2nd March 2019"
     }
   ]
 }

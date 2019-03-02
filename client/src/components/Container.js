@@ -6,7 +6,6 @@ import Navbar from './Navbar'
 import Home from './Home'
 import History from './History'
 import Heatmap from './Heatmap'
-import BarChart from './BarChart'
 
 import '../styles/App.scss'
 
@@ -24,7 +23,6 @@ class Container extends Component {
         <Navbar />
         <Switch>
           <Route path='/heatmap' component={Heatmap} />
-          <Route path='/barchart' component={BarChart} />
           <Route path='/history' component={History} />
           <Route path='/' component={Home} />
           <Redirect to='/' />
