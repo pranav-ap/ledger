@@ -34,6 +34,9 @@ class Navbar extends Component {
             <NavLink to='/history' className='navbar-item'>History</NavLink>
             <NavLink to='/heatmap' className='navbar-item'>Heatmap</NavLink>
           </div>
+          <div className="navbar-end">
+            <NavLink to='/settings' className='navbar-item'>Settings</NavLink>
+          </div>
         </div>
       </nav>
     )

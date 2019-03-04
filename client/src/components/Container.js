@@ -6,6 +6,7 @@ import Navbar from './Navbar'
 import Home from './Home'
 import History from './History'
 import Heatmap from './Heatmap'
+import Settings from './Settings'
 
 import '../styles/App.scss'
 
@@ -22,6 +23,7 @@ class Container extends Component {
       <div className='App'>
         <Navbar />
         <Switch>
+          <Route path='/settings' component={Settings} />
           <Route path='/heatmap' component={Heatmap} />
           <Route path='/history' component={History} />
           <Route path='/' component={Home} />

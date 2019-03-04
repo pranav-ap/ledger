@@ -47,6 +47,18 @@
       "item": "water",
       "expense": 70,
       "date": "2nd March 2019"
+    },
+    {
+      "id": "zfj1Vvqs2",
+      "item": "gift",
+      "expense": 10000,
+      "date": "4th March 2019"
+    },
+    {
+      "id": "E3f6irWrD",
+      "item": "noodles",
+      "expense": 130,
+      "date": "4th March 2019"
     }
   ]
 }
