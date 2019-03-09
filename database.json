@@ -59,6 +59,12 @@
       "item": "noodles",
       "expense": 130,
       "date": "4th March 2019"
+    },
+    {
+      "id": "gseQ231A4",
+      "item": "pizza",
+      "expense": 400,
+      "date": "9th March 2019"
     }
   ]
 }

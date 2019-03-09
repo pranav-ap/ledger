@@ -1,40 +1,48 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import moment from 'moment'
+import Moment from 'moment'
+import { extendMoment } from 'moment-range'
 
 import CashTable from './CashTable'
 
-class History extends Component {
-  renderTables() {
-    let { transactions } = this.props
+const moment = extendMoment(Moment)
 
-    let transactionsDict = {}
-    transactions.forEach(t => {
-      transactionsDict[t.date] = transactionsDict[t.date] || []
-      transactionsDict[t.date].push(t)
+class History extends Component {
+  prepareData(transactions) {
+    const range = moment.range(new Date(2018, 1, 1), new Date())
+
+    let prepared = {}
+    for (let day of range.by('day')) {
+      prepared[day.format('Do MMMM YYYY')] = []
+    }
+
+    transactions.forEach(tran => {
+      prepared[tran.date].push(tran)
     })
 
-    return Object
-      .keys(transactionsDict)
-      .sort((left, right) => {
-        if (moment(left, 'Do MMMM YYYY').isBefore(moment(right, 'Do MMMM YYYY'))) {
-          return 1
-        } else if (moment(left, 'Do MMMM YYYY').isAfter(moment(right, 'Do MMMM YYYY'))) {
-          return -1
-        } else {
-          return 0
-        }
-      })
-      .map(date => {
+    return prepared
+  }
+
+  renderTables() {
+    let { transactions } = this.props
+    transactions = this.prepareData(transactions)
+
+    const range = moment.range(new Date(2018, 1, 1), new Date())
+    const dates = Array.from(range.by('day')).reverse()
+
+    return dates.map(day => {
+      const date = day.format('Do MMMM YYYY')
+      if (transactions[date].length) {
         return (
           <React.Fragment key={date}>
             <br />
             <h1 className='title is-5 has-text-weight-light date-title'>{date}</h1>
-            <CashTable transactions={transactionsDict[date]} />
+            <CashTable transactions={transactions[date]} />
             <br />
           </React.Fragment>
         )
-      })
+      }
+    })
   }
 
   render() {
@@ -45,7 +53,7 @@ class History extends Component {
           {this.renderTables()}
         </div>
       </div>
-    );
+    )
   }
 }
 
