@@ -90,6 +90,15 @@
       text-transform: capitalize;
     }
 
+    .count, .del-column, .edit-column {
+      width: 3em;
+    }
+
+    .item, .expense {
+      width: 50%;
+      text-overflow: ellipsis;
+    }
+
     .no-transactions {
 
     }

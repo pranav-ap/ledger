@@ -10,11 +10,11 @@ class CashTable extends Component {
     if (transactions.length === 0) {
       return (
         <tr>
-          <th/>
-          <td className='no-transactions'>No transactions on this day.</td>
-          <td/>
-          <td/>
-          <td/>
+          <th className={'count'} />
+          <td className={'item no-transactions'}>No transactions on this day.</td>
+          <td className={'expense'} />
+          <td className={'del-column'} />
+          <td className={'edit-column'} />
         </tr>
       )
     }
@@ -47,14 +47,14 @@ class CashTable extends Component {
 
       return (
         <tr key={count} id={transaction.id}>
-          <th>{count}</th>
-          <td contentEditable={false}>{transaction.item}</td>
-          <td contentEditable={false}>{transaction.expense}</td>
+          <th className={'count'}>{count}</th>
+          <td className={'item'} contentEditable={false}>{transaction.item}</td>
+          <td className={'expense'} contentEditable={false}>{transaction.expense}</td>
           <td
-            className='row-btn'
+            className='row-btn del-column'
             onClick={() => dispatch(startDeleteTransaction(transaction.id))}><i className='far fa-trash-alt delete-btn'/></td>
           <td
-            className='row-btn'
+            className='row-btn edit-column'
             onClick={() => handleEdit(transaction)}><i className='far fa-edit edit-btn'/></td>
         </tr>
       )
