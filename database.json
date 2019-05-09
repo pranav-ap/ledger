@@ -65,6 +65,13 @@
       "item": "pizza",
       "expense": 400,
       "date": "9th March 2019"
+    },
+    {
+      "id": "SuEyHulFR",
+      "item": "kfc",
+      "expense": 600,
+      "income": 0,
+      "date": "9th May 2019"
     }
   ]
 }
