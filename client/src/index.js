@@ -1,23 +1,51 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 
-import './styles/index.scss'
-import * as serviceWorker from './serviceWorker'
-import { configure } from './store/store'
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 
-import Container from './components/Container'
+import { Provider } from 'react-redux'
+import store from './app state/store'
 
-export const store = configure()
+import './styles/index.scss';
+import App from './components/App';
+import Home from './components/Home'
+import History from './components/History'
+import Heatmap from './components/Heatmap'
+import Settings from './components/Settings'
 
-ReactDOM.render(
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "history",
+        element: <History />,
+      },
+      {
+        path: "heatmap",
+        element: <Heatmap />,
+      },
+      {
+        path: "settings",
+        element: <Settings />,
+      },
+    ],
+  },
+]);
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
   <Provider store={store}>
-    <BrowserRouter>
-      <Container />
-    </BrowserRouter>
-  </Provider>,
-  document.getElementById('root')
-)
-
-serviceWorker.unregister()
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
+  </Provider>
+);

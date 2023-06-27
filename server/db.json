@@ -1,0 +1,22 @@
+{
+  "transactions": [
+    {
+      "id": "4NXB5lofW",
+      "item": "Kkjkjkj",
+      "expense": 84,
+      "date": "27th June 2023"
+    },
+    {
+      "id": "V6SR2NERr",
+      "item": "water",
+      "expense": 34,
+      "date": "27th June 2023"
+    },
+    {
+      "id": "Vee2NERr",
+      "item": "water",
+      "expense": 124,
+      "date": "20th June 2023"
+    }
+  ]
+}

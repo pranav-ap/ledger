@@ -11,7 +11,7 @@ class Heatmap extends Component {
   render() {
     const { transactions } = this.props
 
-    const range = moment.range(new Date(2018, 1, 1), new Date())
+    const range = moment.range(new Date(2023, 1, 1), new Date())
 
     let prepared = {}
     for (let day of range.by('day')) {
@@ -55,8 +55,8 @@ class Heatmap extends Component {
               "#f47560",
               '#e50b0b'
             ]}
-            from="2018-12-31T18:30:00.000Z"
-            to="2019-12-30T18:30:00.000Z"
+            from="2023-12-31T18:30:00.000Z"
+            to="2024-12-30T18:30:00.000Z"
             data={calenderData}
           />
         </div>

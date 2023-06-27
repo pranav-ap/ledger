@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+server/node_modules
+client/node_modules
 
 # testing
 /coverage
@@ -24,4 +26,4 @@ yarn-error.log*
 
 .vscode
 
-database.json
+server/database.json

@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
-
+import { Link } from 'react-router-dom'
 
 class Navbar extends Component {
   componentDidMount() {
@@ -19,23 +16,23 @@ class Navbar extends Component {
     return (
       <nav className='navbar is-warning navbar-custom' role='navigation' aria-label='main navigation'>
         <div className='navbar-brand'>
-          <a className='navbar-item custom-icon'><i className='fas fa-money-check-alt'/>&nbsp;&nbsp;Ledger&nbsp;&nbsp;</a>
+          <a href="/#" className='navbar-item custom-icon'><i className='fas fa-money-check-alt' />&nbsp;&nbsp;Ledger&nbsp;&nbsp;</a>
 
-          <a role='button' className='navbar-burger' aria-label='menu' aria-expanded='false'>
-            <span aria-hidden='true'/>
-            <span aria-hidden='true'/>
-            <span aria-hidden='true'/>
+          <a href="/#" role='button' className='navbar-burger' aria-label='menu' aria-expanded='false'>
+            <span aria-hidden='true' />
+            <span aria-hidden='true' />
+            <span aria-hidden='true' />
           </a>
         </div>
 
         <div id='navbar-menu-custom' className='navbar-menu has-background-warning is-shadowless'>
           <div className='navbar-start'>
-            <NavLink to='/' className='navbar-item'>Home</NavLink>
-            <NavLink to='/history' className='navbar-item'>History</NavLink>
-            <NavLink to='/heatmap' className='navbar-item'>Heatmap</NavLink>
+            <Link to='/' className='navbar-item'>Home</Link>
+            <Link to='/history' className='navbar-item'>History</Link>
+            <Link to='/heatmap' className='navbar-item'>Heatmap</Link>
           </div>
           <div className="navbar-end">
-            <NavLink to='/settings' className='navbar-item'>Settings</NavLink>
+            <Link to='/settings' className='navbar-item'>Settings</Link>
           </div>
         </div>
       </nav>
@@ -43,4 +40,4 @@ class Navbar extends Component {
   }
 }
 
-export default withRouter(connect()(Navbar))
+export default Navbar

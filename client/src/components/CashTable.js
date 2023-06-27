@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { startUpdateTransaction, startDeleteTransaction } from './../actions/transactions-actions'
+import { updateTransaction, deleteTransaction } from './../app state/tranSlice'
 
 class CashTable extends Component {
   renderRows() {
@@ -26,13 +26,13 @@ class CashTable extends Component {
       row.cells[1].contentEditable = row.cells[2].contentEditable = editable
 
       if (!editable) {
-        transaction = {
+        let updatedData = {
           ...transaction,
           item: row.cells[1].innerText,
           expense: row.cells[2].innerText
         }
 
-        dispatch(startUpdateTransaction(transaction.id, transaction))
+        dispatch(updateTransaction({ id: transaction.id, updatedData }))
       }
 
       if (editable) {
@@ -52,10 +52,10 @@ class CashTable extends Component {
           <td className={'expense'} contentEditable={false}>{transaction.expense}</td>
           <td
             className='row-btn del-column'
-            onClick={() => dispatch(startDeleteTransaction(transaction.id))}><i className='far fa-trash-alt delete-btn'/></td>
+            onClick={() => dispatch(deleteTransaction(transaction.id))}><i className='far fa-trash-alt delete-btn' /></td>
           <td
             className='row-btn edit-column'
-            onClick={() => handleEdit(transaction)}><i className='far fa-edit edit-btn'/></td>
+            onClick={() => handleEdit(transaction)}><i className='far fa-edit edit-btn' /></td>
         </tr>
       )
     })
@@ -66,16 +66,16 @@ class CashTable extends Component {
       <div className='CashTable'>
         <table className='table is-striped is-hoverable is-fullwidth'>
           <thead>
-          <tr>
-            <th>No</th>
-            <th>Item</th>
-            <th>Cash</th>
-            <th>&nbsp;</th>
-            <th>&nbsp;</th>
-          </tr>
+            <tr>
+              <th>No</th>
+              <th>Item</th>
+              <th>Cash</th>
+              <th>&nbsp;</th>
+              <th>&nbsp;</th>
+            </tr>
           </thead>
           <tbody>
-          {this.renderRows()}
+            {this.renderRows()}
           </tbody>
         </table>
       </div>
@@ -84,3 +84,4 @@ class CashTable extends Component {
 }
 
 export default connect()(CashTable)
+

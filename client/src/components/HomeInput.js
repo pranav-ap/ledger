@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import moment from 'moment'
+import { addTransaction } from './../app state/tranSlice'
 
-import { startAddTransaction } from './../actions/transactions-actions'
 
 class HomeInput extends Component {
   constructor(props) {
@@ -13,13 +13,14 @@ class HomeInput extends Component {
       expense: 0,
       date: moment().format('Do MMMM YYYY')
     }
+
+    this.inputbarRef = React.createRef()
   }
 
   handleOnEnter(e) {
     e.preventDefault()
 
-    let inputbar = document.getElementById('Inputbar')
-    let text = inputbar.value
+    let text = this.inputbarRef.current.value
 
     if (text.length === 0 || e.keyCode !== 13) {
       return
@@ -27,18 +28,18 @@ class HomeInput extends Component {
 
     if (this.state.item === '') {
       this.setState({ item: text }, () => {
-        inputbar.value = ''
-        inputbar.placeholder = `How much did the ${this.state.item} cost ?`
+        this.inputbarRef.current.value = ''
+        this.inputbarRef.current.placeholder = `How much did the ${this.state.item} cost ?`
 
         document.querySelector('#Subtext #Cancel').style.opacity = 1
       })
     } else if (isNaN(text)) {
-      inputbar.value = ''
-      inputbar.placeholder = 'Please enter a number'
+      this.inputbarRef.current.value = ''
+      this.inputbarRef.current.placeholder = 'Please enter a number'
     } else {
       this.setState({ expense: Number(text) }, () => {
         const { dispatch } = this.props
-        dispatch(startAddTransaction(this.state))
+        dispatch(addTransaction(this.state))
         this.reset()
       })
     }
@@ -51,7 +52,7 @@ class HomeInput extends Component {
     }, () => {
       document.querySelector('#Subtext #Cancel').style.opacity = 0
 
-      let inputbar = document.getElementById('Inputbar')
+      let inputbar = this.inputbarRef.current
       inputbar.value = ''
       inputbar.placeholder = 'What did you buy ?'
     })
@@ -64,7 +65,7 @@ class HomeInput extends Component {
           <div className='control'>
             <input
               id='Inputbar'
-              ref='inputbar'
+              ref={this.inputbarRef}
               className='input is-rounded is-large custom-input'
               type='text'
               placeholder='What did you buy ?'
@@ -81,3 +82,4 @@ class HomeInput extends Component {
 }
 
 export default connect()(HomeInput)
+

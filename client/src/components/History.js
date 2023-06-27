@@ -9,7 +9,7 @@ const moment = extendMoment(Moment)
 
 class History extends Component {
   prepareData(transactions) {
-    const range = moment.range(new Date(2018, 1, 1), new Date())
+    const range = moment.range(new Date(2023, 1, 1), new Date())
 
     let prepared = {}
     for (let day of range.by('day')) {
@@ -27,7 +27,7 @@ class History extends Component {
     let { transactions } = this.props
     transactions = this.prepareData(transactions)
 
-    const range = moment.range(new Date(2018, 1, 1), new Date())
+    const range = moment.range(new Date(2023, 1, 1), new Date())
     const dates = Array.from(range.by('day')).reverse()
 
     return dates.map(day => {
